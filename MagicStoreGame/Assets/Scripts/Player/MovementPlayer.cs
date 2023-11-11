@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
+using System.Security.Cryptography;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MovementPlayer : MonoBehaviour
     [Header("Câmera and Grab Point Transforms")]
     [SerializeField] private Transform _cameraTransform;
     [SerializeField] private Transform _grabPointTransform;
+    [SerializeField] private Transform _dot;
     
     [Header("Variables to movement")]
     [SerializeField] private float _playerSpeed;
@@ -23,16 +25,15 @@ public class MovementPlayer : MonoBehaviour
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
     private Transform _currentItemGrabed;
-    private PlayerInput _playerInput;
+
     void Awake()
     {
-        _currentItemGrabed = null;
       _playerMovement = new PlayerMovement();
-      _playerInput = GetComponent<PlayerInput>();
+      
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
-        
+      _playerMovement.MovementPlayer.UseMachine.started += UsingMachine;
+      _playerMovement.MovementPlayer.UseMachine.canceled += StopUsingMachine;
       _playerMovement.MovementPlayer.Enable();
-        _playerInput.onActionTriggered += PressingMachine;
     }
 
     void Update()
@@ -65,19 +66,6 @@ public class MovementPlayer : MonoBehaviour
         }
 
     }
-    private void PressingMachine(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            RaycastHit hit;
-
-            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, 3))
-            {
-                Debug.Log("Scale Up BOTÃO");
-            }
-        }
-    }
-
     private void MovePlayer()
     {
         float inputVectorValueX = _playerMovement.MovementPlayer.Movement.ReadValue<Vector2>().x;
@@ -94,6 +82,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void CameraLook()
     {
+       
         float mouseX = _playerMovement.MovementPlayer.MouseLook.ReadValue<Vector2>().x;
         float mouseY = _playerMovement.MovementPlayer.MouseLook.ReadValue<Vector2>().y;
 
@@ -102,6 +91,23 @@ public class MovementPlayer : MonoBehaviour
 
         _cameraTransform.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, mouseX * _mouseSensitivity, 0);
+
+        _dot.transform.position = _cameraTransform.position + (_cameraTransform.forward * 0.5f);
+    }
+
+    private void UsingMachine(InputAction.CallbackContext context)
+    {
+
+        Debug.Log("Pressionou o botão para usar a máquina");
+        
+
+    }
+
+    private void StopUsingMachine(InputAction.CallbackContext context)
+    {
+
+        Debug.Log("Soltou o botão para usar a máquina");
+
     }
 
     private void LateUpdate() 
