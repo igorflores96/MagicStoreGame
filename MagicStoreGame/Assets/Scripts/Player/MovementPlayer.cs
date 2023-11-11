@@ -23,13 +23,16 @@ public class MovementPlayer : MonoBehaviour
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
     private Transform _currentItemGrabed;
+    private PlayerInput _playerInput;
     void Awake()
     {
         _currentItemGrabed = null;
-      _playerMovement = new PlayerMovement();  
-
+      _playerMovement = new PlayerMovement();
+      _playerInput = GetComponent<PlayerInput>();
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
+        
       _playerMovement.MovementPlayer.Enable();
+        _playerInput.onActionTriggered += PressingMachine;
     }
 
     void Update()
@@ -40,6 +43,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void GrabItem(InputAction.CallbackContext context)
     {
+        
         if(context.performed)
         {
             if(_currentItemGrabed == null)
@@ -60,6 +64,18 @@ public class MovementPlayer : MonoBehaviour
 
         }
 
+    }
+    private void PressingMachine(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, 3))
+            {
+                Debug.Log("Scale Up BOTÃO");
+            }
+        }
     }
 
     private void MovePlayer()
