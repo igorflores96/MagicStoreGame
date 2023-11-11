@@ -53,6 +53,15 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseMachine"",
+                    ""type"": ""Button"",
+                    ""id"": ""735750ac-c6a5-4b6b-8527-f6100a0ef106"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=10)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -242,6 +251,28 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""action"": ""MouseLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5089e8b8-77f1-49a9-bd26-50b276165164"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseMachine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcd0f487-7555-4f80-a0be-821f04d58412"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseMachine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -253,6 +284,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         m_MovementPlayer_Movement = m_MovementPlayer.FindAction("Movement", throwIfNotFound: true);
         m_MovementPlayer_GrabItem = m_MovementPlayer.FindAction("GrabItem", throwIfNotFound: true);
         m_MovementPlayer_MouseLook = m_MovementPlayer.FindAction("MouseLook", throwIfNotFound: true);
+        m_MovementPlayer_UseMachine = m_MovementPlayer.FindAction("UseMachine", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +349,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
     private readonly InputAction m_MovementPlayer_Movement;
     private readonly InputAction m_MovementPlayer_GrabItem;
     private readonly InputAction m_MovementPlayer_MouseLook;
+    private readonly InputAction m_MovementPlayer_UseMachine;
     public struct MovementPlayerActions
     {
         private @PlayerMovement m_Wrapper;
@@ -324,6 +357,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_MovementPlayer_Movement;
         public InputAction @GrabItem => m_Wrapper.m_MovementPlayer_GrabItem;
         public InputAction @MouseLook => m_Wrapper.m_MovementPlayer_MouseLook;
+        public InputAction @UseMachine => m_Wrapper.m_MovementPlayer_UseMachine;
         public InputActionMap Get() { return m_Wrapper.m_MovementPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -342,6 +376,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @MouseLook.started += instance.OnMouseLook;
             @MouseLook.performed += instance.OnMouseLook;
             @MouseLook.canceled += instance.OnMouseLook;
+            @UseMachine.started += instance.OnUseMachine;
+            @UseMachine.performed += instance.OnUseMachine;
+            @UseMachine.canceled += instance.OnUseMachine;
         }
 
         private void UnregisterCallbacks(IMovementPlayerActions instance)
@@ -355,6 +392,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @MouseLook.started -= instance.OnMouseLook;
             @MouseLook.performed -= instance.OnMouseLook;
             @MouseLook.canceled -= instance.OnMouseLook;
+            @UseMachine.started -= instance.OnUseMachine;
+            @UseMachine.performed -= instance.OnUseMachine;
+            @UseMachine.canceled -= instance.OnUseMachine;
         }
 
         public void RemoveCallbacks(IMovementPlayerActions instance)
@@ -377,5 +417,6 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnGrabItem(InputAction.CallbackContext context);
         void OnMouseLook(InputAction.CallbackContext context);
+        void OnUseMachine(InputAction.CallbackContext context);
     }
 }

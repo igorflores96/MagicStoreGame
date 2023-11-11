@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
+using System.Security.Cryptography;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private Transform _cameraTransform;
     [SerializeField] private Transform _grabPointTransform;
     [SerializeField] private Transform _dot;
-
     
     [Header("Variables to movement")]
     [SerializeField] private float _playerSpeed;
@@ -31,6 +31,8 @@ public class MovementPlayer : MonoBehaviour
       _playerMovement = new PlayerMovement();
       
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
+      _playerMovement.MovementPlayer.UseMachine.started += UsingMachine;
+      _playerMovement.MovementPlayer.UseMachine.canceled += StopUsingMachine;
       _playerMovement.MovementPlayer.Enable();
     }
 
@@ -91,6 +93,21 @@ public class MovementPlayer : MonoBehaviour
         transform.rotation *= Quaternion.Euler(0, mouseX * _mouseSensitivity, 0);
 
         _dot.transform.position = _cameraTransform.position + (_cameraTransform.forward * 0.5f);
+    }
+
+    private void UsingMachine(InputAction.CallbackContext context)
+    {
+
+        Debug.Log("Pressionou o botão para usar a máquina");
+        
+
+    }
+
+    private void StopUsingMachine(InputAction.CallbackContext context)
+    {
+
+        Debug.Log("Soltou o botão para usar a máquina");
+
     }
 
     private void LateUpdate() 

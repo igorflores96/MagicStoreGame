@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UseMachine",
+                    "type": "Button",
+                    "id": "735750ac-c6a5-4b6b-8527-f6100a0ef106",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=10)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -220,6 +229,28 @@
                     "action": "MouseLook",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5089e8b8-77f1-49a9-bd26-50b276165164",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseMachine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcd0f487-7555-4f80-a0be-821f04d58412",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseMachine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

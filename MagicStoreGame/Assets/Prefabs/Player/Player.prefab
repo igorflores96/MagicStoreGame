@@ -264,6 +264,7 @@ MonoBehaviour:
   _cameraTransform: {fileID: 1288572043677817578}
   _grabPointTransform: {fileID: 1288572043721048641}
   _dot: {fileID: 1288572042666058224}
+  a: {fileID: 7792106550540368358, guid: 1b803f2a56826684484bcb709ae4cb6f, type: 3}
   _playerSpeed: 2
   _mouseSensitivity: 0.2
   _layerMask:
