@@ -22,6 +22,9 @@ public class MovementPlayer : MonoBehaviour
     [Header("Item to Grab Mask and Distance to Grab")]
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _grabRayCastDistance;
+    [Header("Layer Button Up e Down")]
+    [SerializeField] private LayerMask _layerUp;
+    [SerializeField] private LayerMask _layerDown;
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
     private Transform _currentItemGrabed;
@@ -34,6 +37,7 @@ public class MovementPlayer : MonoBehaviour
       _playerMovement.MovementPlayer.UseMachine.started += UsingMachine;
       _playerMovement.MovementPlayer.UseMachine.canceled += StopUsingMachine;
       _playerMovement.MovementPlayer.Enable();
+      
     }
 
     void Update()
@@ -54,11 +58,35 @@ public class MovementPlayer : MonoBehaviour
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerMask))
                 {
                     _currentItemGrabed = hit.transform;
-                    hit.transform.SetParent(this.transform);
+                    Collider temp;
+                    
+                    if (_currentItemGrabed.TryGetComponent(out temp))
+                    {
+                        temp.enabled = false;
+                    }
+
+                    ScaleObject temp2;
+                        
+                    if (_currentItemGrabed.TryGetComponent(out temp2))
+                    {
+                        temp2.IsScalingUp = false;
+                        temp2.IsScalingDown = false;
+                    }
+
+                    _currentItemGrabed.SetParent(this.transform);
                 } 
             }
             else
             {
+                Collider temp;
+                
+                if (_currentItemGrabed.TryGetComponent(out temp))
+                {
+                    temp.enabled = true;
+                }
+
+
+
                 _currentItemGrabed.parent = null;
                 _currentItemGrabed = null;
             }
@@ -98,7 +126,26 @@ public class MovementPlayer : MonoBehaviour
     private void UsingMachine(InputAction.CallbackContext context)
     {
 
-        Debug.Log("Pressionou o botão para usar a máquina");
+        RaycastHit hit;
+        ButtonsScale temp;
+
+        if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerDown))
+        {      
+            Debug.Log("bateu no alto");
+            if (hit.transform.TryGetComponent(out temp))
+            {
+                temp.SetMachineDown();
+            }
+        }
+        
+        if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerUp))
+        {
+            Debug.Log("bateu no baixo");
+            if (hit.transform.TryGetComponent(out temp))
+            {
+                temp.SetMachineUp();
+            }
+        }
         
 
     }
