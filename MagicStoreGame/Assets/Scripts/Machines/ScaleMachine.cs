@@ -6,31 +6,44 @@ using UnityEngine;
 public class ScaleMachine : MonoBehaviour
 {
     [SerializeField] Transform _objectPosition;
-    public ScaleObject _objectToScale;
+    private Item _objectToScale;
 
 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.layer == 20)
         {
-            other.transform.position = _objectPosition.position;
-            _objectToScale = other.GetComponent<ScaleObject>();
+            _objectToScale = other.GetComponent<Item>();
             _objectToScale.IsScalingUp = false;
             _objectToScale.IsScalingDown = false;
         }
-            
+    }
 
+    private void OnTriggerExit(Collider other) 
+    {
+        if(_objectToScale != null && other.gameObject.layer == 20)
+        {
+            _objectToScale = null;
+        }
     }
 
     public void ActiveScaleUp()
     {
-        _objectToScale.IsScalingDown = false;
-        _objectToScale.IsScalingUp = true;
+        if(_objectToScale != null)
+        {
+            _objectToScale.IsScalingDown = false;
+            _objectToScale.IsScalingUp = true;
+        }
+
     }
 
     public void ActiveScaleDown()
     {
-        _objectToScale.IsScalingUp = false;
-        _objectToScale.IsScalingDown = true;
+        if(_objectToScale != null)
+        {
+            _objectToScale.IsScalingUp = false;
+            _objectToScale.IsScalingDown = true;
+        }
+
     }
 }

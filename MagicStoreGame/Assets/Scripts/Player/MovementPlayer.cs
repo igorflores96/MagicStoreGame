@@ -34,8 +34,7 @@ public class MovementPlayer : MonoBehaviour
       _playerMovement = new PlayerMovement();
       
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
-      _playerMovement.MovementPlayer.UseMachine.started += UsingMachine;
-      _playerMovement.MovementPlayer.UseMachine.canceled += StopUsingMachine;
+      _playerMovement.MovementPlayer.UseMachine.performed += UsingMachine;
       _playerMovement.MovementPlayer.Enable();
       
     }
@@ -58,36 +57,30 @@ public class MovementPlayer : MonoBehaviour
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerMask))
                 {
                     _currentItemGrabed = hit.transform;
-                    Collider temp;
                     
-                    if (_currentItemGrabed.TryGetComponent(out temp))
-                    {
-                        temp.enabled = false;
-                    }
+                    Item temp2;
+                    Rigidbody tempRb;
 
-                    ScaleObject temp2;
+                    if(_currentItemGrabed.TryGetComponent(out tempRb))
+                    {
+                        tempRb.freezeRotation = true;
+                    }
                         
                     if (_currentItemGrabed.TryGetComponent(out temp2))
                     {
                         temp2.IsScalingUp = false;
                         temp2.IsScalingDown = false;
                     }
-
-                    _currentItemGrabed.SetParent(this.transform);
                 } 
             }
             else
             {
-                Collider temp;
-                
-                if (_currentItemGrabed.TryGetComponent(out temp))
+                Rigidbody tempRb;
+
+                if(_currentItemGrabed.TryGetComponent(out tempRb))
                 {
-                    temp.enabled = true;
+                    tempRb.constraints = RigidbodyConstraints.None;
                 }
-
-
-
-                _currentItemGrabed.parent = null;
                 _currentItemGrabed = null;
             }
 
@@ -125,36 +118,27 @@ public class MovementPlayer : MonoBehaviour
 
     private void UsingMachine(InputAction.CallbackContext context)
     {
-
-        RaycastHit hit;
-        ButtonsScale temp;
-
-        if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerDown))
-        {      
-            Debug.Log("bateu no alto");
-            if (hit.transform.TryGetComponent(out temp))
-            {
-                temp.SetMachineDown();
-            }
-        }
-        
-        if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerUp))
+        if(context.performed)
         {
-            Debug.Log("bateu no baixo");
-            if (hit.transform.TryGetComponent(out temp))
+            RaycastHit hit;
+            ButtonsScale temp;
+
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerDown))
+            {      
+                if (hit.transform.TryGetComponent(out temp))
+                {
+                    temp.SetMachineDown();
+                }
+            }
+            
+            if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerUp))
             {
-                temp.SetMachineUp();
+                if (hit.transform.TryGetComponent(out temp))
+                {
+                    temp.SetMachineUp();
+                }
             }
         }
-        
-
-    }
-
-    private void StopUsingMachine(InputAction.CallbackContext context)
-    {
-
-        Debug.Log("Soltou o botão para usar a máquina");
-
     }
 
     private void LateUpdate() 
