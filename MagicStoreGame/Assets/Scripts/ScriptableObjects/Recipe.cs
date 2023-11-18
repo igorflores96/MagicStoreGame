@@ -11,4 +11,6 @@ public class Recipe : ScriptableObject
     public string RecipeName;
     public GameObject RecipeItemPrefab;
     public List<Item> RecipeItems;
+
 }
+

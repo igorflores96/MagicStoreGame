@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BotaoScaleUp
   - BotaoScaleDown
+  - MicroWavePlate
+  - Poop
   layers:
   - Default
   - TransparentFX
