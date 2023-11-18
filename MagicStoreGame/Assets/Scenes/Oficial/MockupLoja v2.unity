@@ -22613,7 +22613,7 @@ GameObject:
   - component: {fileID: 174256013}
   - component: {fileID: 174256012}
   m_Layer: 0
-  m_Name: FloorResetItem
+  m_Name: FloorItemTrigger
   m_TagString: FloorResetItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23094,7 +23094,6 @@ Transform:
   - {fileID: 977187963}
   - {fileID: 758316462}
   - {fileID: 174256011}
-  - {fileID: 637507766}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27310,13 +27309,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637507765}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.67, y: 10.09, z: 23.67}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30.84102, y: 3.6887589, z: 13.353809}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 218548202}
-  m_RootOrder: 9
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &637507767
 BoxCollider:
@@ -27409,8 +27408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d153ec298ea08e4996f6f14c8525461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIngredient: 0
-  isRecipe: 0
 --- !u!1 &641322689
 GameObject:
   m_ObjectHideFlags: 0
@@ -33571,37 +33568,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1278201503
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1278201504}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1278201504
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278201503}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1279308147
 PrefabInstance:
   m_ObjectHideFlags: 0
