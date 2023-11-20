@@ -12,7 +12,7 @@ public class EnchantmentMachine : MonoBehaviour
     [SerializeField] private List<Color> _colors;
     [SerializeField] private float _timeToEnchant;
     private EnchantmentType _currentEnchantment;
-    [SerializeField] private ParticleSystem _objectToEnchant;
+    private ParticleSystem _objectToEnchant;
     private bool _isEnchanting;
     private float _timer;
     

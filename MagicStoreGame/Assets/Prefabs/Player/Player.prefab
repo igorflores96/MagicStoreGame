@@ -264,12 +264,14 @@ MonoBehaviour:
   _cameraTransform: {fileID: 1288572043677817578}
   _grabPointTransform: {fileID: 1288572043721048641}
   _dot: {fileID: 1288572042666058224}
-  _playerSpeed: 2
+  _playerSpeed: 8
   _mouseSensitivity: 0.2
+  _maxLookUp: 45
+  _maxLookDown: 70
   _layerMask:
     serializedVersion: 2
     m_Bits: 1048576
-  _grabRayCastDistance: 3
+  _grabRayCastDistance: 10
   _layerUp:
     serializedVersion: 2
     m_Bits: 2097152

@@ -15,7 +15,8 @@ public class DroppedItemsManager : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        ResetItemPosition();
+        if(other.gameObject.CompareTag("FloorResetItem"))
+            ResetItemPosition();
     }
 
     void ResetItemPosition()

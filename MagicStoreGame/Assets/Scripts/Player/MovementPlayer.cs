@@ -19,6 +19,9 @@ public class MovementPlayer : MonoBehaviour
     [Header("Variables to movement")]
     [SerializeField] private float _playerSpeed;
     [SerializeField] private float _mouseSensitivity;
+    [SerializeField] private float _maxLookUp;
+    [SerializeField] private float _maxLookDown;
+
     
     [Header("Item to Grab Mask and Distance to Grab")]
     [SerializeField] private LayerMask _layerMask;
@@ -122,7 +125,7 @@ public class MovementPlayer : MonoBehaviour
         float mouseY = _playerMovement.MovementPlayer.MouseLook.ReadValue<Vector2>().y;
 
         _rotationX -= mouseY * _mouseSensitivity;
-        _rotationX = Mathf.Clamp(_rotationX, -10, 30);
+        _rotationX = Mathf.Clamp(_rotationX, -_maxLookUp, _maxLookDown);
 
         _cameraTransform.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, mouseX * _mouseSensitivity, 0);
@@ -186,9 +189,9 @@ public class MovementPlayer : MonoBehaviour
     }
     private void LateUpdate() 
     {
-        _grabPointTransform.position = _cameraTransform.position + (_cameraTransform.forward * 0.5f);
+        _grabPointTransform.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
 
         if(_currentItemGrabed != null)
-            _currentItemGrabed.position = _cameraTransform.position + (_cameraTransform.forward * 0.5f);
+            _currentItemGrabed.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
     }
 }
