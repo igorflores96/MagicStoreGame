@@ -276,6 +276,9 @@ MonoBehaviour:
   _layerDown:
     serializedVersion: 2
     m_Bits: 4194304
+  _enchantLayer:
+    serializedVersion: 2
+    m_Bits: 1073741824
 --- !u!143 &1288572044066874379
 CharacterController:
   m_ObjectHideFlags: 0
@@ -288,7 +291,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
