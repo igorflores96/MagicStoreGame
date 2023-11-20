@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseItem",
+                    "type": "Button",
+                    "id": "772a48ff-81ab-440a-9a6f-97f07d6e4990",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=20)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -233,7 +242,7 @@
                 {
                     "name": "",
                     "id": "5089e8b8-77f1-49a9-bd26-50b276165164",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -249,6 +258,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "UseMachine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fff48ef-cd21-4e65-ada5-bca7db2ff74d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

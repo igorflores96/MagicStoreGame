@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class ScaleMachine : MonoBehaviour
 {
-    [SerializeField] Transform _objectPosition;
     private Item _objectToScale;
-
 
     private void OnTriggerEnter(Collider other) 
     {

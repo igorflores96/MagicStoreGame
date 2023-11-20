@@ -17,3 +17,4 @@ MonoBehaviour:
   RecipeItems:
   - {fileID: 6948790061963574178, guid: 2b4994dea38908848b1a2c6b6d69a89a, type: 3}
   - {fileID: 1264005522993539695, guid: 72c323c298cf0044e81d651adb09b5d6, type: 3}
+  RecipeEnchantment: 5

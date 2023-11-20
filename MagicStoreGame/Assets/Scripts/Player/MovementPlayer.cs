@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
 using System.Security.Cryptography;
+using UnityEngine.Events;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -25,9 +26,13 @@ public class MovementPlayer : MonoBehaviour
     [Header("Layer Button Up e Down")]
     [SerializeField] private LayerMask _layerUp;
     [SerializeField] private LayerMask _layerDown;
+    [SerializeField] private LayerMask _enchantLayer;
+
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
     private Transform _currentItemGrabed;
+
+    public static UnityEvent<EnchantmentType> OnSprayPickedUp = new UnityEvent<EnchantmentType>();
 
     void Awake()
     {
@@ -35,6 +40,9 @@ public class MovementPlayer : MonoBehaviour
       
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
       _playerMovement.MovementPlayer.UseMachine.performed += UsingMachine;
+      _playerMovement.MovementPlayer.UseItem.started += UsingSpray;
+      _playerMovement.MovementPlayer.UseItem.canceled += StopUsingSpray;
+
       _playerMovement.MovementPlayer.Enable();
       
     }
@@ -57,19 +65,25 @@ public class MovementPlayer : MonoBehaviour
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerMask))
                 {
                     _currentItemGrabed = hit.transform;
-                    
-                    Item temp2;
+                    _currentItemGrabed.rotation = Quaternion.identity;
+                    Item tempItem;
                     Rigidbody tempRb;
+                    EnchantmentSpray spray;
 
                     if(_currentItemGrabed.TryGetComponent(out tempRb))
                     {
                         tempRb.freezeRotation = true;
                     }
                         
-                    if (_currentItemGrabed.TryGetComponent(out temp2))
+                    if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
-                        temp2.IsScalingUp = false;
-                        temp2.IsScalingDown = false;
+                        tempItem.IsScalingUp = false;
+                        tempItem.IsScalingDown = false;
+                    }
+
+                    if(_currentItemGrabed.TryGetComponent(out spray))
+                    {
+                        OnSprayPickedUp.Invoke(spray.EnchantmentTypeSpray);
                     }
                 } 
             }
@@ -141,6 +155,35 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    private void UsingSpray(InputAction.CallbackContext context)
+    {
+        if(_currentItemGrabed != null)
+        {
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, _grabRayCastDistance, _enchantLayer))
+            {   
+                EnchantmentSpray spray;
+                if(_currentItemGrabed.TryGetComponent(out spray))
+                {
+                    spray.Use();
+                }
+
+            }
+        }
+    }
+
+    private void StopUsingSpray(InputAction.CallbackContext context)
+    {
+        if(_currentItemGrabed != null)
+        {
+            EnchantmentSpray spray;
+
+            if(_currentItemGrabed.TryGetComponent(out spray))
+            {
+                spray.StopUse();
+            }
+
+        } 
+    }
     private void LateUpdate() 
     {
         _grabPointTransform.position = _cameraTransform.position + (_cameraTransform.forward * 0.5f);

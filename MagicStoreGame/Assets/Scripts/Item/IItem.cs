@@ -5,5 +5,8 @@ using UnityEngine;
 public interface IItem
 {
     public int ValueItem {get;set;}
+    public string NameItem {get;set;}
+    public EnchantmentType EnchantmentItem {get;set;}
+
     public int IncreaseValueItem(int multiplier);
 }

@@ -8,9 +8,12 @@ public class Item : MonoBehaviour, IItem, IScalable
     [SerializeField] private float _maxSizeUp;
     [SerializeField] private float _maxSizeDown;
     [SerializeField] private float _scalePerFrame;
+    [SerializeField] private string _itemName;
+    [SerializeField] private EnchantmentType _currentElement;
     private bool _isScalingUp;
     private bool _isScalingDown;
     private int _itemValue;
+    
 
     
     private void Awake() 
@@ -22,16 +25,15 @@ public class Item : MonoBehaviour, IItem, IScalable
     void Update()
     {
 
-            if (_isScalingUp && transform.localScale.x < _maxSizeUp)
-            {
-                Scale(_scalePerFrame);
-            }
+        if (_isScalingUp && transform.localScale.x < _maxSizeUp)
+        {
+            Scale(_scalePerFrame);
+        }
 
-            if (_isScalingDown && transform.localScale.x > _maxSizeDown)
-            {
-                Scale(-_scalePerFrame);
-            }
-
+        if (_isScalingDown && transform.localScale.x > _maxSizeDown)
+        {
+            Scale(-_scalePerFrame);
+        }
     }
     public void Scale(float scalingVal)
     {
@@ -70,5 +72,17 @@ public class Item : MonoBehaviour, IItem, IScalable
     {
         get { return _isScalingDown;}
         set { _isScalingDown = value;} 
+    }
+
+    public string NameItem
+    {
+        get {return _itemName;}
+        set { _itemName = value;}
+    }
+
+    public EnchantmentType EnchantmentItem
+    {
+        get {return _currentElement;}
+        set {_currentElement = value;}
     }
 }
