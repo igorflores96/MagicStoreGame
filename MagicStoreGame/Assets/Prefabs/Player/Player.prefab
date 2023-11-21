@@ -268,17 +268,17 @@ MonoBehaviour:
   _mouseSensitivity: 0.2
   _maxLookUp: 45
   _maxLookDown: 70
-  _layerMask:
+  _layerGrabItem:
     serializedVersion: 2
     m_Bits: 1048576
   _grabRayCastDistance: 10
-  _layerUp:
+  _layerButtonUp:
     serializedVersion: 2
     m_Bits: 2097152
-  _layerDown:
+  _layerButtonDown:
     serializedVersion: 2
     m_Bits: 4194304
-  _enchantLayer:
+  _layerMachineEnchant:
     serializedVersion: 2
     m_Bits: 1073741824
 --- !u!143 &1288572044066874379

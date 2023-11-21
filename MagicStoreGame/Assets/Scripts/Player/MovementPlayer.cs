@@ -24,12 +24,12 @@ public class MovementPlayer : MonoBehaviour
 
     
     [Header("Item to Grab Mask and Distance to Grab")]
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private LayerMask _layerGrabItem;
     [SerializeField] private float _grabRayCastDistance;
-    [Header("Layer Button Up e Down")]
-    [SerializeField] private LayerMask _layerUp;
-    [SerializeField] private LayerMask _layerDown;
-    [SerializeField] private LayerMask _enchantLayer;
+    [Header("Layers of Action")]
+    [SerializeField] private LayerMask _layerButtonUp;
+    [SerializeField] private LayerMask _layerButtonDown;
+    [SerializeField] private LayerMask _layerMachineEnchant;
 
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
@@ -65,7 +65,7 @@ public class MovementPlayer : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerMask))
+                if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerGrabItem))
                 {
                     _currentItemGrabed = hit.transform;
                     _currentItemGrabed.rotation = Quaternion.identity;
@@ -140,7 +140,7 @@ public class MovementPlayer : MonoBehaviour
             RaycastHit hit;
             ButtonsScale temp;
 
-            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerDown))
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerButtonDown))
             {      
                 if (hit.transform.TryGetComponent(out temp))
                 {
@@ -148,7 +148,7 @@ public class MovementPlayer : MonoBehaviour
                 }
             }
             
-            if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerUp))
+            if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerButtonUp))
             {
                 if (hit.transform.TryGetComponent(out temp))
                 {
@@ -162,7 +162,7 @@ public class MovementPlayer : MonoBehaviour
     {
         if(_currentItemGrabed != null)
         {
-            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, _grabRayCastDistance, _enchantLayer))
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, _grabRayCastDistance, _layerMachineEnchant))
             {   
                 EnchantmentSpray spray;
                 if(_currentItemGrabed.TryGetComponent(out spray))
