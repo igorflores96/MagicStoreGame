@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 5329278236328538972}
   - component: {fileID: 5329278236328538946}
   - component: {fileID: 5329278236328538945}
-  m_Layer: 21
+  m_Layer: 10
   m_Name: "Bot\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059e8fb634654ce429134f3fb4f819b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _machine: {fileID: 8777520868818014436}
+  _scaleMachine: {fileID: 8777520868818014436}
+  _buttonName: ButtonUp
 --- !u!1 &5329278236337593231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1398,7 @@ GameObject:
   - component: {fileID: 4790775522066756733}
   - component: {fileID: 3805223302494062395}
   - component: {fileID: 3805223302494062394}
-  m_Layer: 22
+  m_Layer: 10
   m_Name: "Bot\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,7 +1495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059e8fb634654ce429134f3fb4f819b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _machine: {fileID: 8777520868818014436}
+  _scaleMachine: {fileID: 8777520868818014436}
+  _buttonName: ButtonDown
 --- !u!1 &9184601542100749930
 GameObject:
   m_ObjectHideFlags: 0

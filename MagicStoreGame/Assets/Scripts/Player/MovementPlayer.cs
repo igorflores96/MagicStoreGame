@@ -27,18 +27,23 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private LayerMask _layerGrabItem;
     [SerializeField] private float _grabRayCastDistance;
     [Header("Layers of Action")]
-    [SerializeField] private LayerMask _layerButtonUp;
-    [SerializeField] private LayerMask _layerButtonDown;
+    [SerializeField] private LayerMask _layerButton;
     [SerializeField] private LayerMask _layerMachineEnchant;
 
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
     private Transform _currentItemGrabed;
 
+    private Dictionary<string, Action<Buttons>> _buttonActions = new Dictionary<string, Action<Buttons>>();
+
     public static UnityEvent<EnchantmentType> OnSprayPickedUp = new UnityEvent<EnchantmentType>();
 
     void Awake()
     {
+        _buttonActions["ButtonDown"] = SetMachineDown;
+        _buttonActions["ButtonUp"] = SetMachineUp;
+
+
       _playerMovement = new PlayerMovement();
       
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
@@ -138,21 +143,17 @@ public class MovementPlayer : MonoBehaviour
         if(context.performed)
         {
             RaycastHit hit;
-            ButtonsScale temp;
+            Buttons temp;
 
-            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerButtonDown))
+            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerButton))
             {      
                 if (hit.transform.TryGetComponent(out temp))
                 {
-                    temp.SetMachineDown();
-                }
-            }
-            
-            if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerButtonUp))
-            {
-                if (hit.transform.TryGetComponent(out temp))
-                {
-                    temp.SetMachineUp();
+                    if(_buttonActions.ContainsKey(temp.ButtonName))
+                    {
+                        _buttonActions[temp.ButtonName]?.Invoke(temp);
+                    }
+
                 }
             }
         }
@@ -186,6 +187,16 @@ public class MovementPlayer : MonoBehaviour
             }
 
         } 
+    }
+
+    private void SetMachineDown(Buttons button)
+    {
+        button.SetScaleMachineDown();
+    }
+
+    private void SetMachineUp(Buttons button)
+    {
+        button.SetScaleMachineUp();
     }
     private void LateUpdate() 
     {
