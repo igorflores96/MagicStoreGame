@@ -5,6 +5,8 @@ using UnityEngine;
 public class Buttons : MonoBehaviour
 {
     [SerializeField] private ScaleMachine _scaleMachine;
+    [SerializeField] private PotionMachine _potionMachine;
+
     [SerializeField] private string _buttonName;
 
     public void SetScaleMachineUp()
@@ -15,6 +17,16 @@ public class Buttons : MonoBehaviour
     public void SetScaleMachineDown()
     {
         _scaleMachine.ActiveScaleDown();
+    }
+
+    public void SetWaterOn()
+    {
+        _potionMachine.UseWather();
+    }
+
+    public void SetFireOn()
+    {
+        Debug.Log("Ligou o Fogo");
     }
 
     public string ButtonName

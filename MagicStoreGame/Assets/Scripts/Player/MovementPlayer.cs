@@ -42,6 +42,8 @@ public class MovementPlayer : MonoBehaviour
     {
         _buttonActions["ButtonDown"] = SetMachineDown;
         _buttonActions["ButtonUp"] = SetMachineUp;
+        _buttonActions["ButtonWater"] = TurnOnWater;
+        _buttonActions["ButtonFire"] = TurnOnFire;
 
 
       _playerMovement = new PlayerMovement();
@@ -51,8 +53,7 @@ public class MovementPlayer : MonoBehaviour
       _playerMovement.MovementPlayer.UseItem.started += UsingSpray;
       _playerMovement.MovementPlayer.UseItem.canceled += StopUsingSpray;
 
-      _playerMovement.MovementPlayer.Enable();
-      
+      _playerMovement.MovementPlayer.Enable();      
     }
 
     void Update()
@@ -197,6 +198,15 @@ public class MovementPlayer : MonoBehaviour
     private void SetMachineUp(Buttons button)
     {
         button.SetScaleMachineUp();
+    }
+
+    private void TurnOnWater(Buttons button)
+    {
+       button.SetWaterOn(); 
+    }
+    private void TurnOnFire(Buttons button)
+    {
+       button.SetFireOn(); 
     }
     private void LateUpdate() 
     {
