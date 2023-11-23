@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Oficial/MockupLoja v2.unity
+    guid: 93a19dca0eacb7a409644a9d76a1b9ff
   m_configObjects: {}
