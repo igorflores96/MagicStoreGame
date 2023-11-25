@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
             s.source.Play(); //Da play no audio
     }
 
-    void StopAllMusic()
+    public void StopAllMusic()
     {
         foreach (Sound s in sounds)
         {
