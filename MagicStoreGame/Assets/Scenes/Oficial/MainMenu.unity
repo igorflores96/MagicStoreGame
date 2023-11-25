@@ -214,25 +214,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: TesteMusic1
-    clip: {fileID: 8300000, guid: 6dda532821f2da340a016426dd133a64, type: 3}
+    clip: {fileID: 8300000, guid: 6615856b3cb1ee341bb2f104c2dc106e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     isMusic: 1
-    source: {fileID: 0}
-  - name: TesteMusic2
-    clip: {fileID: 8300000, guid: 780210811d8333948a6a21dd3013bbd4, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    isMusic: 1
-    source: {fileID: 0}
-  - name: TesteSFX1
-    clip: {fileID: 8300000, guid: 8472b113768448442bc81e2a88a613d3, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    isMusic: 0
     source: {fileID: 0}
 --- !u!114 &1365857254
 MonoBehaviour:
