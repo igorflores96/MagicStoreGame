@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnchantmentType
-{
-    Fire, Lightning, Water, Ice, Nature, None
-}
-
 public class EnchantmentMachine : MonoBehaviour
 {
     [SerializeField] private List<Color> _colors;
