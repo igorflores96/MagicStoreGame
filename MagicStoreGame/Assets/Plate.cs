@@ -16,9 +16,9 @@ public class Plate : MonoBehaviour
         {
             collidedObjects.Add(collidedObject);
             Debug.Log(collidedObjects);
+            Item item = collision.gameObject.GetComponent<Item>();
+            microwave.AddItem(item, isUpgraded, collidedObjects);
         }
-        Item item = collision.gameObject.GetComponent<Item>();
-       microwave.AddItem(item, countItem, isUpgraded, collidedObjects);
         Debug.Log(collidedObjects.Count);
     }
     void OnTriggerExit(Collider collision)

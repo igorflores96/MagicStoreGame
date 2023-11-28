@@ -15,6 +15,6 @@ MonoBehaviour:
   RecipeName: Magic Ring
   RecipeItemPrefab: {fileID: 6512811555718465987, guid: aa628170af823164eaa78031bc05e1fe, type: 3}
   RecipeItems:
-  - {fileID: 1539902716934102078, guid: def48f55ed1dd5749b3bd3b703a1f84a, type: 3}
+  - {fileID: 1539902716934102078, guid: 589e5f7c8230b7546a489d2f753b2fed, type: 3}
   - {fileID: 484415490836977832, guid: 12fd86e18220e4b4abc3de95f64895f5, type: 3}
   RecipeEnchantment: 5

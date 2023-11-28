@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6150240420270071893}
   - component: {fileID: 8772774907359628543}
   - component: {fileID: 7238337316351020659}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Iron Sword
   m_TagString: Result
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5330146071696248973}
   - component: {fileID: 5330146071696248970}
   - component: {fileID: 5330146071696248971}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Wooden Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2808472364351437757}
-  m_LocalRotation: {x: 0.3535523, y: -0.35355332, z: -0.6123719, w: 0.6123737}
+  m_LocalRotation: {x: 0.3535534, y: -0.3535534, z: -0.61237246, w: 0.61237246}
   m_LocalPosition: {x: 29.847, y: 3.198, z: 13.593}
   m_LocalScale: {x: 0.03, y: 0.014999999, z: 0.03}
   m_ConstrainProportionsScale: 0
@@ -62,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999992, y: 40.42864, z: 2.9989948}
-  m_Center: {x: -1.6238973e-12, y: 19.095362, z: -0.10709884}
+  m_Size: {x: 3.5553641, y: 40.42864, z: 2.8675237}
+  m_Center: {x: -0.12266747, y: 19.095362, z: -0.04136654}
 --- !u!114 &5330146071696248971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   _scalePerFrame: 0
   _itemName: Stick
   _currentElement: 4
+  scalableFromRecipe: 0
 --- !u!1 &8287314603407728100
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +93,7 @@ GameObject:
   - component: {fileID: 3896328358814621235}
   - component: {fileID: 3085223140413300325}
   - component: {fileID: 710903300512945201}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

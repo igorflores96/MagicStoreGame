@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9066270630842340122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9066270630842340123}
+  - component: {fileID: 9066270630842340120}
+  m_Layer: 0
+  m_Name: Dialogs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9066270630842340123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066270630842340122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9066270630842340120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066270630842340122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959daad7b6561fa4d852baba2b4c68ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameItemsKeys:
+  - Magic Ring
+  - Magic Bracelet
+  - Magic Wand
+  - Iron Shield
+  - Crystal Orb
+  - Iron Sword
+  - Fire Boots
+  - Lightning Boots
+  - Water Boots
+  - Ice Boots
+  - Nature Boots
+  - Fire Glasses
+  - Lightning Glasses
+  - Water Glasses
+  - Ice Glasses
+  - Nature Glasses
+  - Fire Gloves
+  - Lightning Gloves
+  - Ice Gloves
+  - Nature Gloves
+  - Leather Helmet of Fire
+  - Leather Helmet of Lightning
+  - Leather Helmet of Water
+  - Leather Helmet of Ice
+  - Leather Helmet of Nature
+  - Iron Helmet of Fire
+  - Iron Helmet of Lightning
+  - Iron Helmet of Water
+  - Iron Helmet of Ice
+  - Iron Helmet of Nature
+  - Potion of Wisdom
+  - Harmony Elixir
+  - Potion of Eternal Youth
+  - Elixir of Mind Control
+  - Elixir of Luck Control
+  - Illusion Elixir
+  - Potion of Eternal Love
+  - Potion of Truth
+  - Potion of Strenght
+  - Elixir of Laughter Control
+  - Elixir of Hiccups Control
+  - Elixir of Sneezes Control
+  - Dancing Elixir
+  - Potion of Eternal Chicken
+  - Yawning Elixir
+  - Potion of Eternal Fart
+  - Elixir of Size Control
+  - Potion of Speed
+  - Potion of Light
+  - Elixir of Weather Control
+  - Elixir of Time Control
+  - Potion of Eternal Invisibility
+  - Poison Damage Buff
+  - Damage Buff
+  - Agility Buff
+  - Magic Damage Buff
+  - Defense Buff
+  DialogItemsValues:
+  - I can't find my 'Magic Ring'. I think I lost it. Can you make me another one?
+  - A friend of mine told me that a 'Magic Bracelet' would enhance my spells. Can
+    you make one?
+  - My 'Magic Wand' just snapped. Can you craft me a new one?"
+  - I've been forced by my group to be the dungeon tank this weekend, but I'm scared.
+    Can you make me a sturdy 'Iron Shield'?
+  - ' "I want to find out something about my.. friend.. Can you make me a ''Crystal
+    Orb''?'
+  - My 'Iron Sword' is completely rusted. Can you make me a new one?
+  - I'm going to explore a region with ice enemies. I will need a pair of 'Fire Boots'.
+  - I want to play a prank on my friend and give him a pair of  'Lightning Boots'.
+    He will be shocked, hehe
+  - I will be going to explore a volcanic region with my group. I'm going to need
+    a pair of 'Water Boots'.
+  - This summer has been so hot!!! Do you have, by any chance, a pair of 'Ice Boots'
+    to test if they can cool me off?"
+  - My party will be fighting a corrupted giant today. I will be needing a pair of
+    'Nature Boots.'
+  - I'm going to explore a region with ice enemies. I will need one 'Fire Glasses'.
+  - I want to play a prank on my friend and give him a 'Lightning Glasses'. He will
+    be shocked, hehe
+  - I will be going to explore a volcanic region with my group. I'm going to need
+    one 'Water Glasses'.
+  - This summer has been so hot!!! Do you have, by any chance, an 'Ice Glasses' to
+    test if they can cool me off?"
+  - My party will be fighting a corrupted giant today. I will be needing one 'Nature
+    Glasses.'
+  - I'm going to explore a region with ice enemies. I will need a pair of 'Fire Gloves'.
+  - I will be going to explore a volcanic region with my group. I'm going to need
+    a pair of 'Water Gloves.
+  - This summer has been so hot!!! Do you have, by any chance, a pair of 'Ice Gloves'
+    to test if they can cool me off?"
+  - My party will be fighting a corrupted giant today. I will be needing a pair of
+    'Nature Gloves.'
+  - I'm going to explore a region with ice enemies. I will need a 'Leather Helmet
+    of Fire'.
+  - I want to play a prank on my friend and give him a 'Leather Helmet of Lightning'.
+    He will be shocked, hehe
+  - I will be going to explore a volcanic region with my group. I'm going to need
+    a 'Leather Helmet of Water'.
+  - This summer has been so hot!!! Do you have, by any chance, a "Leather Helmet
+    of Ice' to test if they can cool me off?"
+  - My party will be fighting a corrupted giant today. I will be needing a 'Leather
+    Helmet of Nature'.
+  - I'm going to explore a region with ice enemies. I will need a 'Iron Helmet of
+    Fire'.
+  - I want to play a prank on my friend and give him a 'Iron Helmet of Lightning'.
+    He will be shocked, hehe
+  - I will be going to explore a volcanic region with my group. I'm going to need
+    a 'Iron Helmet of Water.'"
+  - This summer has been so hot!!! Do you have, by any chance, a "Iron Helmet of
+    Ice' to test if they can cool me off?"
+  - My party will be fighting a corrupted giant today. I will be needing a 'Iron
+    Helmet of Nature'.
+  - I feel like I'm not wise enough compared to my school peers, do you have any
+    'Potion of Wisdom' to help me?
+  - My psychologist said I need to calm down before I do something rash, do you have
+    any 'Harmony Elixir'?
+  - Today is my birthday, I'm getting old! Approaching my 30s :( Do you have any
+    'Potion of Eternal Youth'?
+  - The city guards won't let me through the city gates. Do you have any 'Elixir
+    of Mind Control' to help me convince them?
+  - I've started playing tabletop RPGs with my friends. I want to roll higher numbers
+    on the dices. Do you have any 'Elixir of Luck Control' for me?
+  - I want to sneak out tonight, but my parents always check my room in the middle
+    of the night. Do you have any 'Illusion Elixir' for me to create an illusion
+    in my bed?
+  - I want to sneak out toHe never even looked at my face :/ I need a 'Potion of
+    Eternal Love'He never even looked at my face :/ I need a 'Potion of Eternal Love'
+  - I know my husband ate the last slice of cake. I need a 'Potion of Truth' to get
+    a confession out of him.
+  - My days are getting busier, I don't have time to work out anymore. Make me a
+    'Potion of Strength'.
+  - Hahaha, that wizard, haha, in the tower, haha, he cast a, haha, laughter spell
+    on me, haha, I need a 'Elixir of Laughter Control, hahaha
+  - Hic! I ate my lunch too quickly. Hic! I need an 'Elixir of Hiccups Control',
+    Hic!.
+  - ACHOO! I can't stop sneezing, achoo! It seems like I'm allergic to the smell
+    of the sea, achoo! Make me a 'Elixir of Sneezes Control', achoo!
+  - I'm going to a ball tonight with a girl, but I'm a terrible dancer. I need a
+    'Dancing Elixir'.
+  - I'm always taking reckless actions because I'm so brave. I've just recovered
+    from surgery after being dared to jump from the third floor. I need a 'Potion
+    of Eternal Chicken'
+  - I, I haven't slept well for days. Could a 'Yawning Elixir' help me?
+  - I wonder how funny it would be to mix a 'Potion of Eternal Fart' into my teacher's
+    coffee, hehe
+  - My brother is such a bully. I need to make him smaller. Get me an 'Elixir of
+    Size Control'.
+  - I bet on a race with my friend in exchange for his legendary sword. I need a
+    'Potion of Speed'.
+  - I'm going to explore the catacombs with my group today. I need a 'Potion of Light'.
+  - My garden needs water, but I'm too lazy to water it. I need a 'Elixir of Weather
+    Control'.
+  - I need to finish a project for my boss by tomorrow. I need extra time. Get me
+    an 'Elixir of Time Control'.
+  - People won't stop asking me to do things! I just want to disappear! Make me a
+    'Potion of Eternal Invisibility'.
+  - I'm going to try a chase fight today with a creature. I need a sandwich with
+    'Poison Damage Buff'. I will try to poison the creature and make a run for it,
+    hehe
+  - Entering the lair of a mighty dragon today. With a 'Damage Buff' sandwich in
+    hand, I'm certainly going to defeat it!
+  - I'm going to participate in a race today. I need a sandwich of 'Agility Buff'.
+  - My group is considering replacing me with a stronger wizard. I need to deal more
+    damage in today's dungeon. Make me a 'Magic Damage Buff' sandwich.
+  - I'm going to be the tank of a dungeon tonight, I'll need a 'Defense Buff' sandwich.

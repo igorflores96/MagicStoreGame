@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 484415490836977835}
   - component: {fileID: 484415490836977834}
   - component: {fileID: 484415490836977832}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: penaAmarela
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8585468566537570395}
-  m_LocalRotation: {x: -0.0000015497205, y: -0.0000013276257, z: -1, w: 0.00000010536894}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 31.331, y: 3.197, z: 13.395}
   m_LocalScale: {x: 0.92196053, y: 0.92196053, z: 0.92196053}
   m_ConstrainProportionsScale: 0
@@ -102,7 +102,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &484415490836977834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.19998467, y: 0.02, z: 0.6856259}
-  m_Center: {x: 0.0047500916, y: 7.036675e-14, z: 0.30973738}
+  m_Size: {x: 0.19998467, y: 0.09732305, z: 0.6856259}
+  m_Center: {x: 0.004750094, y: -0.0014630088, z: 0.3097374}
 --- !u!114 &484415490836977832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +133,4 @@ MonoBehaviour:
   _scalePerFrame: 0
   _itemName: Feather
   _currentElement: 4
+  scalableFromRecipe: 0

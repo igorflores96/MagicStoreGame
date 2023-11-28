@@ -19,7 +19,7 @@ public class Microwave : MonoBehaviour
     public float timerSeconds;
     private List<GameObject> collidedObjects = new List<GameObject>();
 
-    public void AddItem(Item RecipeItem, int countItem,bool isUpgraded, List<GameObject> collidedObjects)
+    public void AddItem(Item RecipeItem,bool isUpgraded, List<GameObject> collidedObjects)
     {
         this.collidedObjects = collidedObjects;
         if (!isUpgraded) 
@@ -62,7 +62,7 @@ public class Microwave : MonoBehaviour
 
         foreach (Recipe recipe in RecipeLists)
         {
-            if (RecipeItem3 == null)
+            if (RecipeItem3 == null && recipe.RecipeItems.Count == 2)
            {
                 if(ContainsItem(recipe,RecipeItem1) == true && ContainsItem(recipe, RecipeItem2) == true)
                 {
@@ -79,7 +79,7 @@ public class Microwave : MonoBehaviour
                     DeleteCollidedObjects();
                 }
            }
-           else
+           else if( RecipeItem3 != null)
            {
                 if (ContainsItem(recipe, RecipeItem1) == true && ContainsItem(recipe, RecipeItem2) == true && ContainsItem(recipe, RecipeItem3) == true)
                 {
@@ -123,7 +123,10 @@ public class Microwave : MonoBehaviour
     }
     public void RemoveItemTrigger(GameObject obj)
     {
-        this.countItem--;
+        if (this.countItem > 0)
+        {
+            this.countItem--;
+        }
         for (int i = 0; i < collidedObjects.Count; i++)
         {
             if (collidedObjects[i] == obj)

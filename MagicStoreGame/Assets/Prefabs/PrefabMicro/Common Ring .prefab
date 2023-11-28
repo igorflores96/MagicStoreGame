@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1539902716934102079}
   - component: {fileID: 1539902716934102072}
   - component: {fileID: 1539902716934102078}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: 'Common Ring '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &1539902716934102072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132,3 +132,4 @@ MonoBehaviour:
   _scalePerFrame: 0
   _itemName: Ring
   _currentElement: 5
+  scalableFromRecipe: 0
