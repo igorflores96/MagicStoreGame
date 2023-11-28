@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 911304966}
   - component: {fileID: 911304965}
   - component: {fileID: 911304964}
+  - component: {fileID: 911304968}
   m_Layer: 25
   m_Name: Storage
   m_TagString: Untagged
@@ -451,14 +452,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911304963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.173, y: 0.207, z: 0.27998197}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911304968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911304963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9323ee47776a54d8140520bc81a07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemPrefab: {fileID: 462721108702856887, guid: 5997f83a526943e4f84e8a28356fff21, type: 3}
+  _storageDisappear: 1
+  _timeToDisappear: 1
 --- !u!1 &971496483
 GameObject:
   m_ObjectHideFlags: 0
@@ -11556,7 +11572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4087814616620608693, guid: 1bd2652641e1e5f439f66211bd24aa13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 0.959
       objectReference: {fileID: 0}
     - target: {fileID: 4087814616620608693, guid: 1bd2652641e1e5f439f66211bd24aa13, type: 3}
       propertyPath: m_LocalPosition.z

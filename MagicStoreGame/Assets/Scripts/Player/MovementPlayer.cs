@@ -18,7 +18,6 @@ public class MovementPlayer : MonoBehaviour
     [Header("Variables to movement")]
     [SerializeField] private float _playerMoveSpeed;
     [SerializeField] private float _playerRunSpeed;
-
     [SerializeField] private float _mouseSensitivity;
     [SerializeField] private float _maxLookUp;
     [SerializeField] private float _maxLookDown;
@@ -73,14 +72,43 @@ public class MovementPlayer : MonoBehaviour
             if(_currentItemGrabed == null)
             {
                 RaycastHit hit;
+                Item tempItem;
+                Rigidbody tempRb;
+                EnchantmentSpray spray;
 
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerGrabItem))
                 {
                     _currentItemGrabed = hit.transform;
                     _currentItemGrabed.rotation = Quaternion.identity;
-                    Item tempItem;
-                    Rigidbody tempRb;
-                    EnchantmentSpray spray;
+
+
+                    if(_currentItemGrabed.TryGetComponent(out tempRb))
+                    {
+                        tempRb.freezeRotation = true;
+                    }
+                        
+                    if (_currentItemGrabed.TryGetComponent(out tempItem))
+                    {
+                        tempItem.IsScalingUp = false;
+                        tempItem.IsScalingDown = false;
+                    }
+
+                    if(_currentItemGrabed.TryGetComponent(out spray))
+                    {
+                        OnSprayPickedUp.Invoke(spray.EnchantmentTypeSpray);
+                    }
+                }
+                else if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerStorage))
+                {
+
+                    Storage tempStorage;
+                    
+                    if(hit.transform.TryGetComponent(out tempStorage))
+                    {
+                        _currentItemGrabed = tempStorage.GetItemFromStorage();
+                    }
+
+                    _currentItemGrabed.rotation = Quaternion.identity;
 
                     if(_currentItemGrabed.TryGetComponent(out tempRb))
                     {
