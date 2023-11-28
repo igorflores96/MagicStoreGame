@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Dialog : MonoBehaviour
@@ -10,12 +11,7 @@ public class Dialog : MonoBehaviour
 
         public Dictionary<string, string> ItemsDialogDicionary;
 
-    private void OnEnable()
-    {
-        ItemsDialogDicionary = CreateDictionary(NameItemsKeys, DialogItemsValues);
-    }
-
-    public string GetFinalSentence(string itemQuality)
+    public string GetForgeFinalSentence(string itemQuality)
     {
         string dialog;
         
@@ -34,15 +30,41 @@ public class Dialog : MonoBehaviour
         return dialog;
     }
 
-    public string GetInitialSentence(string itemName)
+    public string GetForgeInitialSentence(string itemName)
     {
         string sentence;
+        
 
         if(ItemsDialogDicionary.TryGetValue(itemName, out sentence))
             return sentence;
         else
-            return "I forgot what I wanted. ";
+            return "I forgot what I wanted.";           
 
+    }
+
+    public string GetSellInitialSentence()
+    {
+        return "Hi! Can you evaluate this item for me? I want to know how many scales I can get from it.";
+    }
+
+    public string GetSellFinalSentence()
+    {
+        int rand = Random.Range(0, 3);
+
+        switch (rand)
+        {
+            case 0: return "What? Seriously, this item was fake? It was a family heirloom :( Well, thank you very much for your help.";
+            case 1: return "No way! I've been keeping this item for years, and I needed some scales at the moment. :/";
+            case 2: return "Really? But I was sure this item was genuine! Well, I'll take it to another store for evaluation; something must be wrong.";
+            default: return "Well, ok.";
+        }
+
+
+    }
+
+    public void CreateDictionary()
+    {
+        ItemsDialogDicionary = CreateDictionary(NameItemsKeys, DialogItemsValues);
     }
 
     private Dictionary<string, string> CreateDictionary(List<string> keys, List<string> values)
