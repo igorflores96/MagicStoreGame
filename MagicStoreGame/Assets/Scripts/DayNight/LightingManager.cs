@@ -20,10 +20,6 @@ public class LightingManager : MonoBehaviour
             // Obtém o número de velas do CandleHolder
             numberOfCandles = candleHolder.activeCandles;
         }
-        else
-        {
-            Debug.LogError("CandleHolder não encontrado na cena.");
-        }
     }
 
     private void Update()
