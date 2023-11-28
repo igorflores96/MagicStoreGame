@@ -43,11 +43,20 @@
                 },
                 {
                     "name": "UseItem",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "772a48ff-81ab-440a-9a6f-97f07d6e4990",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": "Hold(duration=20)",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Run",
+                    "type": "PassThrough",
+                    "id": "8c3e399f-645b-4b60-8732-1cb0ffbdcd08",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -175,6 +184,17 @@
                 },
                 {
                     "name": "",
+                    "id": "55ef494f-6bca-4417-9e09-8665b7d5d629",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "66f84fc7-915c-459c-a33d-f1cd2cfe41a3",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -269,6 +289,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3a54010-3825-4bba-bf8c-28ff23ae602c",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "479d6ffb-aa68-4a64-a285-3d2dae3c5fd5",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "965a5578-d0c5-4449-87f4-dce8bb465560",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

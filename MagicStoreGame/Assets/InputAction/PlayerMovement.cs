@@ -65,11 +65,20 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""UseItem"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""772a48ff-81ab-440a-9a6f-97f07d6e4990"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=20)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""8c3e399f-645b-4b60-8732-1cb0ffbdcd08"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -197,6 +206,17 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""55ef494f-6bca-4417-9e09-8665b7d5d629"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""66f84fc7-915c-459c-a33d-f1cd2cfe41a3"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -293,6 +313,39 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3a54010-3825-4bba-bf8c-28ff23ae602c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""479d6ffb-aa68-4a64-a285-3d2dae3c5fd5"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""965a5578-d0c5-4449-87f4-dce8bb465560"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -306,6 +359,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         m_MovementPlayer_MouseLook = m_MovementPlayer.FindAction("MouseLook", throwIfNotFound: true);
         m_MovementPlayer_UseMachine = m_MovementPlayer.FindAction("UseMachine", throwIfNotFound: true);
         m_MovementPlayer_UseItem = m_MovementPlayer.FindAction("UseItem", throwIfNotFound: true);
+        m_MovementPlayer_Run = m_MovementPlayer.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +426,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
     private readonly InputAction m_MovementPlayer_MouseLook;
     private readonly InputAction m_MovementPlayer_UseMachine;
     private readonly InputAction m_MovementPlayer_UseItem;
+    private readonly InputAction m_MovementPlayer_Run;
     public struct MovementPlayerActions
     {
         private @PlayerMovement m_Wrapper;
@@ -381,6 +436,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         public InputAction @MouseLook => m_Wrapper.m_MovementPlayer_MouseLook;
         public InputAction @UseMachine => m_Wrapper.m_MovementPlayer_UseMachine;
         public InputAction @UseItem => m_Wrapper.m_MovementPlayer_UseItem;
+        public InputAction @Run => m_Wrapper.m_MovementPlayer_Run;
         public InputActionMap Get() { return m_Wrapper.m_MovementPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -405,6 +461,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @UseItem.started += instance.OnUseItem;
             @UseItem.performed += instance.OnUseItem;
             @UseItem.canceled += instance.OnUseItem;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         private void UnregisterCallbacks(IMovementPlayerActions instance)
@@ -424,6 +483,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @UseItem.started -= instance.OnUseItem;
             @UseItem.performed -= instance.OnUseItem;
             @UseItem.canceled -= instance.OnUseItem;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         public void RemoveCallbacks(IMovementPlayerActions instance)
@@ -448,5 +510,6 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         void OnMouseLook(InputAction.CallbackContext context);
         void OnUseMachine(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

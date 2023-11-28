@@ -54,6 +54,7 @@ public class EnchantmentMachine : MonoBehaviour
             var mainModule = _objectToEnchant.main; //Only way to access the startcolor
             _objectToEnchant.Play();
             mainModule.startColor = _colors[(int)_currentEnchantment];
+            _timer = _timeToEnchant;
         }
     }
 
