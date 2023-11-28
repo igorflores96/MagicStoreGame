@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7609750555691945225}
   m_Layer: 20
   m_Name: Glass Shard
-  m_TagString: Untagged
+  m_TagString: RecipeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8164702038706409651}
-  m_LocalRotation: {x: 0.73244476, y: 0.59390306, z: -0.33140928, w: 0.031172274}
+  m_LocalRotation: {x: 0.7324469, y: 0.5939019, z: -0.33140668, w: 0.031173633}
   m_LocalPosition: {x: 23.96, y: 2.95, z: 11.64}
   m_LocalScale: {x: 46.919212, y: 46.919197, z: 46.91922}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 153.94, y: 29.947006, z: -70.98999}
 --- !u!33 &8033748085888525727
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -130,6 +130,6 @@ MonoBehaviour:
   _maxSizeUp: 0
   _maxSizeDown: 0
   _scalePerFrame: 0
-  _itemName: 
+  _itemName: Glass
   _currentElement: 0
   scalableFromRecipe: 0

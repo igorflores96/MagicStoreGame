@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 484415490836977832}
   m_Layer: 20
   m_Name: penaAmarela
-  m_TagString: Untagged
+  m_TagString: RecipeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,6 @@ MonoBehaviour:
   _maxSizeUp: 0
   _maxSizeDown: 0
   _scalePerFrame: 0
-  _itemName: Feather
+  _itemName: YellowFeather
   _currentElement: 4
   scalableFromRecipe: 0

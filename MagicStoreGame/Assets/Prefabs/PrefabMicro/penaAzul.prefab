@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2628397964072015658}
   m_Layer: 20
   m_Name: penaAzul
-  m_TagString: Untagged
+  m_TagString: RecipeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3643048234323506997}
-  m_LocalRotation: {x: -0.0000015497205, y: -0.0000013276257, z: -1, w: 0.00000010536894}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 30.92, y: 1.766, z: 12.01}
   m_LocalScale: {x: 0.92196053, y: 0.92196053, z: 0.92196053}
   m_ConstrainProportionsScale: 0
@@ -131,6 +131,6 @@ MonoBehaviour:
   _maxSizeUp: 0
   _maxSizeDown: 0
   _scalePerFrame: 0
-  _itemName: 
+  _itemName: BlueFeather
   _currentElement: 0
   scalableFromRecipe: 0

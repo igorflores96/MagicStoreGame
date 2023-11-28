@@ -100,13 +100,14 @@ public class Microwave : MonoBehaviour
     {
         try
         {
-            return recipe.RecipeItems.All(x => recipe.RecipeItems.Any(y => y.name == RecipeItem.name));
+            return recipe.RecipeItems.All(x => recipe.RecipeItems.Any(y => y._itemName == RecipeItem._itemName));
         }
         catch (Exception)
         {
             return false;
         }
     }
+
     private void DeleteCollidedObjects()
     {
         foreach (GameObject obj in collidedObjects)

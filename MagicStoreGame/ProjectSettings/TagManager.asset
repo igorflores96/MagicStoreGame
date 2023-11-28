@@ -11,6 +11,8 @@ TagManager:
   - MicroWavePlate
   - Poop
   - Result
+  - FxTemporaire
+  - RecipeObject
   layers:
   - Default
   - TransparentFX

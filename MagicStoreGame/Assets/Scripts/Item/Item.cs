@@ -8,7 +8,7 @@ public class Item : MonoBehaviour, IItem, IScalable
     [SerializeField] private float _maxSizeUp;
     [SerializeField] private float _maxSizeDown;
     [SerializeField] private float _scalePerFrame;
-    [SerializeField] private string _itemName;
+    [SerializeField] public string _itemName;
     [SerializeField] private EnchantmentType _currentElement;
     private bool _isScalingUp;
     private bool _isScalingDown;
