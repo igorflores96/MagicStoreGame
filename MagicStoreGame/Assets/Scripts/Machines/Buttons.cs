@@ -6,6 +6,7 @@ public class Buttons : MonoBehaviour
 {
     [SerializeField] private ScaleMachine _scaleMachine;
     [SerializeField] private PotionMachine _potionMachine;
+    [SerializeField] private Microwave _microwave;
 
     [SerializeField] private string _buttonName;
 
@@ -28,7 +29,10 @@ public class Buttons : MonoBehaviour
     {
         Debug.Log("Ligou o Fogo");
     }
-
+    public void FusionItem()
+    {
+       StartCoroutine(_microwave.Timer());
+    }
     public string ButtonName
     {
         get {return _buttonName;}

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6da05b7d71c31c04492bf629cdc810b0, type: 3}
-  m_Name: Recipe
+  m_Name: CristalOrb
   m_EditorClassIdentifier: 
-  RecipeName: Bracelete
-  RecipeItemPrefab: {fileID: 8676363850289980973, guid: 207cb83145420384db4a1c678da78f31, type: 3}
+  RecipeName: CristalOrb
+  RecipeItemPrefab: {fileID: 462721108702856887, guid: 5997f83a526943e4f84e8a28356fff21, type: 3}
   RecipeItems:
-  - {fileID: 1710053563690076321, guid: 8beb94eed08c7184fa25ce99bc1ca379, type: 3}
-  - {fileID: 7513931874806895637, guid: 833db1695fd505d4e994376a06358c5f, type: 3}
+  - {fileID: 2675767232133861495, guid: b1ae4a52648102044b3661c613c9042e, type: 3}
+  - {fileID: 2628397964072015658, guid: 5daf003bd8be34c4cb6f2c4d2c33fa06, type: 3}
+  - {fileID: 7609750555691945225, guid: c39d431abac9f1a4d8dcd9667c988159, type: 3}
   RecipeEnchantment: 5

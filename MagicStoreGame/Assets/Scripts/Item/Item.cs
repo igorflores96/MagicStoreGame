@@ -13,7 +13,7 @@ public class Item : MonoBehaviour, IItem, IScalable
     private bool _isScalingUp;
     private bool _isScalingDown;
     private int _itemValue;
-    
+    public bool scalableFromRecipe;
 
     
     private void Awake() 

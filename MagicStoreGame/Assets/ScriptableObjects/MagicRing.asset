@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6da05b7d71c31c04492bf629cdc810b0, type: 3}
-  m_Name: Recipe 1
+  m_Name: MagicRing
   m_EditorClassIdentifier: 
-  RecipeName: Bracelete
-  RecipeItemPrefab: {fileID: 8676363850289980973, guid: 207cb83145420384db4a1c678da78f31, type: 3}
+  RecipeName: Magic Ring
+  RecipeItemPrefab: {fileID: 6512811555718465987, guid: aa628170af823164eaa78031bc05e1fe, type: 3}
   RecipeItems:
-  - {fileID: 6948790061963574178, guid: 2b4994dea38908848b1a2c6b6d69a89a, type: 3}
-  - {fileID: 1264005522993539695, guid: 72c323c298cf0044e81d651adb09b5d6, type: 3}
+  - {fileID: 1539902716934102078, guid: def48f55ed1dd5749b3bd3b703a1f84a, type: 3}
+  - {fileID: 484415490836977832, guid: 12fd86e18220e4b4abc3de95f64895f5, type: 3}
   RecipeEnchantment: 5

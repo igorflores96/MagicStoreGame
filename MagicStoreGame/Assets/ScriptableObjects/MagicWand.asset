@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da05b7d71c31c04492bf629cdc810b0, type: 3}
+  m_Name: MagicWand
+  m_EditorClassIdentifier: 
+  RecipeName: Magic Wand
+  RecipeItemPrefab: {fileID: 3263414046478962376, guid: 9f57f8c93033a8147a76bbd6d3623449, type: 3}
+  RecipeItems:
+  - {fileID: 5156936923616229914, guid: 52ab89ab808530249ab4ff0eb6fe9db3, type: 3}
+  - {fileID: 5330146071696248971, guid: 957d96fa0ce176e48b614e514d7bdaf3, type: 3}
+  RecipeEnchantment: 5

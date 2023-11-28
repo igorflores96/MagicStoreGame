@@ -10,6 +10,7 @@ TagManager:
   - FloorResetItem
   - MicroWavePlate
   - Poop
+  - Result
   layers:
   - Default
   - TransparentFX

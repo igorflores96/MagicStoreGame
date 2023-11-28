@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6974281346107364791
+--- !u!1 &8585468566537570395
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6979471774104425579}
-  - component: {fileID: 6969608159954268759}
-  - component: {fileID: 6960440419539528567}
-  - component: {fileID: 7305531080024659813}
-  - component: {fileID: 5298298665157393359}
-  - component: {fileID: 6074163667762346307}
+  - component: {fileID: 8966216612117041889}
+  - component: {fileID: 5458852124303449412}
+  - component: {fileID: 7792716490782714254}
+  - component: {fileID: 484415490836977835}
+  - component: {fileID: 484415490836977834}
+  - component: {fileID: 484415490836977832}
   m_Layer: 0
-  m_Name: Iron Sword
+  m_Name: penaAmarela
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6979471774104425579
+--- !u!4 &8966216612117041889
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6974281346107364791}
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: -1.69, y: -0.89699936, z: 0.26}
-  m_LocalScale: {x: 0.5519075, y: 0.99436563, z: 0.8482178}
+  m_GameObject: {fileID: 8585468566537570395}
+  m_LocalRotation: {x: -0.0000015497205, y: -0.0000013276257, z: -1, w: 0.00000010536894}
+  m_LocalPosition: {x: 31.331, y: 3.197, z: 13.395}
+  m_LocalScale: {x: 0.92196053, y: 0.92196053, z: 0.92196053}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!33 &6969608159954268759
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!33 &5458852124303449412
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6974281346107364791}
-  m_Mesh: {fileID: 4300000, guid: 4e641f79386540e43aae56a00254a5a3, type: 3}
---- !u!23 &6960440419539528567
+  m_GameObject: {fileID: 8585468566537570395}
+  m_Mesh: {fileID: 2534964839176971238, guid: 51515fc1c4a7e72449e25775f290e8ef, type: 3}
+--- !u!23 &7792716490782714254
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6974281346107364791}
+  m_GameObject: {fileID: 8585468566537570395}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1330fd56eef87544a786dde28941428, type: 2}
+  - {fileID: -7855358735380629620, guid: 51515fc1c4a7e72449e25775f290e8ef, type: 3}
+  - {fileID: 2405274482990095420, guid: 51515fc1c4a7e72449e25775f290e8ef, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &7305531080024659813
+--- !u!54 &484415490836977835
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6974281346107364791}
+  m_GameObject: {fileID: 8585468566537570395}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -102,26 +103,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5298298665157393359
+--- !u!65 &484415490836977834
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6974281346107364791}
+  m_GameObject: {fileID: 8585468566537570395}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.55504304, y: 1.7484764, z: 0.118342035}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6074163667762346307
+  m_Size: {x: 0.19998467, y: 0.02, z: 0.6856259}
+  m_Center: {x: 0.0047500916, y: 7.036675e-14, z: 0.30973738}
+--- !u!114 &484415490836977832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6974281346107364791}
+  m_GameObject: {fileID: 8585468566537570395}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69cd34abf988a8b4f80ee6186cd81c24, type: 3}
@@ -130,6 +131,5 @@ MonoBehaviour:
   _maxSizeUp: 0
   _maxSizeDown: 0
   _scalePerFrame: 0
-  _itemName: 
-  _currentElement: 0
-  scalableFromRecipe: 1
+  _itemName: Feather
+  _currentElement: 4

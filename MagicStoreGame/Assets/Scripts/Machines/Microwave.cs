@@ -13,33 +13,16 @@ public class Microwave : MonoBehaviour
     private Item RecipeItem2;
     private Item RecipeItem3;
     public GameObject PoopObject;  
-    public bool isUpgraded;
     private int countItem = 0;
-    private List<GameObject> collidedObjects = new List<GameObject>();
     public GameObject spawnPoint;
     private bool poopSet = true;
     public float timerSeconds;
+    private List<GameObject> collidedObjects = new List<GameObject>();
 
-    void OnCollisionEnter(Collision collision)
+    public void AddItem(Item RecipeItem, int countItem,bool isUpgraded, List<GameObject> collidedObjects)
     {
-        GameObject collidedObject = collision.gameObject;
-
-        // Adiciona o objeto à lista se ainda não estiver presente
-        if (!collidedObjects.Contains(collidedObject))
-        {
-            collidedObjects.Add(collidedObject);
-            Debug.Log(collidedObjects);
-        }
-        Item item = collision.gameObject.GetComponent<Item>();
-        AddItem(item, countItem, isUpgraded);
-    }
-    void OnCollisionExit(Collision collision)
-    {
-        countItem--;
-    }
-    public void AddItem(Item RecipeItem, int countItem,bool isUpgraded)
-    {
-        if(!isUpgraded) 
+        this.collidedObjects = collidedObjects;
+        if (!isUpgraded) 
         {
             switch (this.countItem)
             {
@@ -49,15 +32,13 @@ public class Microwave : MonoBehaviour
                     break;
                 case 1:
                     RecipeItem2 = RecipeItem;
-                    this.countItem++;
-                    StartCoroutine(Timer(RecipeItem1, RecipeItem2,null));
                     this.countItem = 0;
                     break;
             }
         }
-        else
+        else if (isUpgraded) 
         {
-            switch (countItem)
+            switch (this.countItem)
             {
                 case 0:
                     RecipeItem1 = RecipeItem;
@@ -69,11 +50,6 @@ public class Microwave : MonoBehaviour
                     break;
                 case 2:
                     RecipeItem3 = RecipeItem;
-                    this.countItem++;
-                    break;
-                case 3:
-                    this.countItem++;
-                    StartCoroutine(Timer(RecipeItem1,RecipeItem2,RecipeItem3));
                     this.countItem = 0;
                     break;
             }
@@ -139,10 +115,21 @@ public class Microwave : MonoBehaviour
         }
         collidedObjects.Clear();
     }
-    IEnumerator Timer(Item RecipeItem1, Item RecipeItem2, Item RecipeItem3)
+    public IEnumerator Timer()
     {
         yield return new WaitForSeconds(timerSeconds);
 
-        FusionItens(RecipeItem1, RecipeItem2, RecipeItem3);
+        FusionItens(this.RecipeItem1, this.RecipeItem2, this.RecipeItem3);
+    }
+    public void RemoveItemTrigger(GameObject obj)
+    {
+        this.countItem--;
+        for (int i = 0; i < collidedObjects.Count; i++)
+        {
+            if (collidedObjects[i] == obj)
+            {
+                collidedObjects.RemoveAt(i);
+            }
+        }
     }
 }

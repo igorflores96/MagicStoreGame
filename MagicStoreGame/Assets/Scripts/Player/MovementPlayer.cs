@@ -44,12 +44,13 @@ public class MovementPlayer : MonoBehaviour
         _buttonActions["ButtonUp"] = SetMachineUp;
         _buttonActions["ButtonWater"] = TurnOnWater;
         _buttonActions["ButtonFire"] = TurnOnFire;
+        _buttonActions["LeverMicro"] = FusionItem;
 
 
-      _playerMovement = new PlayerMovement();
+        _playerMovement = new PlayerMovement();
       
       _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
-      _playerMovement.MovementPlayer.UseMachine.performed += UsingMachine;
+      _playerMovement.MovementPlayer.UseMachine.performed += UsingMachine;  //microondas, box collider = adicionar layer 10 de botao na alavanca
       _playerMovement.MovementPlayer.UseItem.started += UsingSpray;
       _playerMovement.MovementPlayer.UseItem.canceled += StopUsingSpray;
 
@@ -98,6 +99,7 @@ public class MovementPlayer : MonoBehaviour
             }
             else
             {
+
                 Rigidbody tempRb;
 
                 if(_currentItemGrabed.TryGetComponent(out tempRb))
@@ -207,6 +209,10 @@ public class MovementPlayer : MonoBehaviour
     private void TurnOnFire(Buttons button)
     {
        button.SetFireOn(); 
+    }
+    private void FusionItem(Buttons button)
+    {
+        button.FusionItem();
     }
     private void LateUpdate() 
     {
