@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForgeClient : ClientBase
-{   
+public class SellClient : ClientBase
+{
     private Item _currentItem;
     private string _sentenceToOrder;
+
     public override void SetItemOrder(Item item)
     {
         _currentItem = item;
@@ -13,13 +14,8 @@ public class ForgeClient : ClientBase
 
     public override string SetDialogToSay()
     {
-        _sentenceToOrder = DialogStorage.GetForgeInitialSentence(_currentItem.NameItem);
+        _sentenceToOrder = DialogStorage.GetSellInitialSentence();
         CurrentSentence = _sentenceToOrder;
         return CurrentSentence;
-    }
-
-    public void GenerateDictionary()
-    {
-        DialogStorage.CreateDictionary();
-    }
+    }   
 }
