@@ -22,7 +22,5 @@ public class CandleHolder : MonoBehaviour
                 activeCandles++;
             }
         }
-
-        Debug.Log("Active candles in the candelabro: " + activeCandles);
     }
 }
