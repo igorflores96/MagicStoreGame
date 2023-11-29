@@ -9,6 +9,7 @@ public class HelpHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerE
     public float amountYToMove;
     public GameObject cameraControlerObject; // Assign the GameObject you want to move in the Inspector
     public GameObject eventSystemObject; // Assign the EventSystem GameObject in the Inspector
+    public GameObject helpCanvas; // Referência para o objeto HelpCanvas
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class HelpHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         DisableEventSystem();
         MoveCameraControler();
+        ActivateHelpCanvas();
     }
 
     void DisableEventSystem()
@@ -45,6 +47,14 @@ public class HelpHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (eventSystemObject != null)
         {
             eventSystemObject.SetActive(true); // Enable the EventSystem GameObject
+        }
+    }
+
+    void ActivateHelpCanvas()
+    {
+        if (helpCanvas != null)
+        {
+            helpCanvas.SetActive(true); // Ativa o objeto HelpCanvas
         }
     }
 

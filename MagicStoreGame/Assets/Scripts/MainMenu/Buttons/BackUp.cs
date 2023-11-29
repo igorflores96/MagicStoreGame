@@ -2,16 +2,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class ConfigHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class BackUp : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Vector3 originalScale;
     public float scaleFactor;
     public float amountYToMove;
     public GameObject cameraControlerObject; // Assign the GameObject you want to move in the Inspector
     public GameObject eventSystemObject; // Assign the EventSystem GameObject in the Inspector
+    public GameObject helpCanvas; // Referência para o objeto HelpCanvas
     public GameObject configCanvas; // Referência para o objeto ConfigCanvas
-
-
 
     void Start()
     {
@@ -33,8 +32,6 @@ public class ConfigHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         DisableEventSystem();
         MoveCameraControler();
-        ActivateConfigCanvas();
-
     }
 
     void DisableEventSystem()
@@ -53,11 +50,19 @@ public class ConfigHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointe
         }
     }
 
-    void ActivateConfigCanvas()
+    void DeactivateHelpCanvas()
+    {
+        if (helpCanvas != null)
+        {
+            helpCanvas.SetActive(false); // Desativa o objeto HelpCanvas
+        }
+    }
+
+    void DeactivateConfigCanvas()
     {
         if (configCanvas != null)
         {
-            configCanvas.SetActive(true); // Ativa o objeto ConfigCanvas
+            configCanvas.SetActive(false); // Desativa o objeto HelpCanvas
         }
     }
 
@@ -83,6 +88,8 @@ public class ConfigHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointe
         }
 
         objectTransform.position = targetPosition;
+        DeactivateHelpCanvas();
+        DeactivateConfigCanvas();
         EnableEventSystem(); // Re-enable the EventSystem GameObject after movement
     }
 }
