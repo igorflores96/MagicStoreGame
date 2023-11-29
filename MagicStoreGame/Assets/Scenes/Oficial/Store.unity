@@ -51599,6 +51599,7 @@ GameObject:
   - component: {fileID: 2034791014127766656}
   - component: {fileID: 123302778777489789}
   - component: {fileID: 1530128659024801808}
+  - component: {fileID: 2034791014127766657}
   m_Layer: 0
   m_Name: Candle1
   m_TagString: Untagged
@@ -51954,6 +51955,7 @@ GameObject:
   - component: {fileID: 4083044529664288602}
   - component: {fileID: 8127739038044157634}
   - component: {fileID: 4315124627341312848}
+  - component: {fileID: 8127739038044157635}
   m_Layer: 0
   m_Name: Candle3
   m_TagString: Untagged
@@ -53252,6 +53254,18 @@ Transform:
   m_Father: {fileID: 6205888581156966665}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034791014127766657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197431028606287125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6209feaaafca5884a87f109f9938fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2042880199535298014
 Transform:
   m_ObjectHideFlags: 0
@@ -53743,6 +53757,7 @@ GameObject:
   - component: {fileID: 9157655976030642021}
   - component: {fileID: 6640603135654372365}
   - component: {fileID: 8389976700362375631}
+  - component: {fileID: 9157655976030642022}
   m_Layer: 0
   m_Name: Candle5
   m_TagString: Untagged
@@ -54737,6 +54752,7 @@ GameObject:
   - component: {fileID: 5627788721991353926}
   - component: {fileID: 2771468500575442391}
   - component: {fileID: 6755223532417359295}
+  - component: {fileID: 6755223532417359296}
   m_Layer: 0
   m_Name: Candle6
   m_TagString: Untagged
@@ -56256,7 +56272,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire
+      value: CFXR Fire 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_TagString
+      value: CandleFlame
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703176, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_RootOrder
@@ -56385,7 +56409,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire
+      value: CFXR Fire 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_TagString
+      value: CandleFlame
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703176, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_RootOrder
@@ -56514,7 +56546,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire
+      value: CFXR Fire 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_TagString
+      value: CandleFlame
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703176, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_RootOrder
@@ -56643,7 +56683,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire
+      value: CFXR Fire 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_TagString
+      value: CandleFlame
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703176, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_RootOrder
@@ -56768,7 +56816,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire
+      value: CFXR Fire 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_TagString
+      value: CandleFlame
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703176, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_RootOrder
@@ -56897,7 +56953,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire
+      value: CFXR Fire 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405363176605703173, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
+      propertyPath: m_TagString
+      value: CandleFlame
       objectReference: {fileID: 0}
     - target: {fileID: 7405363176605703176, guid: 75e9f74efcbbfb949988d6885349c343, type: 3}
       propertyPath: m_RootOrder
@@ -57694,6 +57758,8 @@ GameObject:
   - component: {fileID: 7039237670061252268}
   - component: {fileID: 5067836097033955942}
   - component: {fileID: 7039237670061252269}
+  - component: {fileID: 7039237670061252270}
+  - component: {fileID: 7039237670061252271}
   m_Layer: 0
   m_Name: CandleHolder
   m_TagString: Untagged
@@ -57804,6 +57870,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6755223532417359296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600123425759383721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6209feaaafca5884a87f109f9938fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6867554720514641726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57872,6 +57950,7 @@ GameObject:
   - component: {fileID: 5316806082717210174}
   - component: {fileID: 3484586015203823536}
   - component: {fileID: 4228491101211596734}
+  - component: {fileID: 6963802251545041601}
   m_Layer: 0
   m_Name: Candle2
   m_TagString: Untagged
@@ -57879,6 +57958,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6963802251545041601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963802251545041600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6209feaaafca5884a87f109f9938fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &7039237670061252268
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -57901,7 +57992,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 149872623}
   Preset: {fileID: 11400000, guid: abd6458e3eb270643b3385358fc52827, type: 2}
-  secondsPerCandle: 2
+  secondsPerCandle: 3
+--- !u!114 &7039237670061252270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725121520709127091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8a1e5e0a8f8a419c960b2327f8494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsPerCandle: 3
+--- !u!114 &7039237670061252271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725121520709127091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e88fec945ddb5488bf2219211215ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsPerCandle: 3
+  candleLight: {fileID: 5878613365077180981}
 --- !u!4 &7248394731569330296
 Transform:
   m_ObjectHideFlags: 0
@@ -58158,6 +58276,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614915196772357834}
   m_Mesh: {fileID: -8674894761121728728, guid: 681df965190d4114e95a4b5e467200fe, type: 3}
+--- !u!114 &8127739038044157635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614915196772357834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6209feaaafca5884a87f109f9938fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8158081898590541770
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -58270,6 +58400,7 @@ GameObject:
   - component: {fileID: 4445427284963926966}
   - component: {fileID: 5424428150879459007}
   - component: {fileID: 3199646009175616218}
+  - component: {fileID: 8241023989643657860}
   m_Layer: 0
   m_Name: Candle4
   m_TagString: Untagged
@@ -58277,6 +58408,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &8241023989643657860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241023989643657859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6209feaaafca5884a87f109f9938fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8290720862858666783
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59047,3 +59190,15 @@ Transform:
   m_Father: {fileID: 6205888581156966665}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9157655976030642022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782902417049228969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6209feaaafca5884a87f109f9938fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
