@@ -8,7 +8,7 @@ public class LightingManager : MonoBehaviour
 
     private float TimeOfDay;
     private int activeCandles; // Este valor será atualizado pelo CandleHolder
-    [SerializeField] private float secondsPerCandle = 60f; // Segundos por vela
+    [SerializeField] private float secondsPerCandle; // Segundos por vela
 
     private void Start()
     {

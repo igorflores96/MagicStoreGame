@@ -13,6 +13,7 @@ TagManager:
   - Result
   - FxTemporaire
   - RecipeObject
+  - CandleFlame
   layers:
   - Default
   - TransparentFX
