@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class CandleManager : MonoBehaviour
+public class FlamesManager : MonoBehaviour
 {
     public float secondsPerCandle = 5f; // Time in seconds to reduce scale per candle
-    private GameObject[] candles; // Array to store active candles
+    private GameObject[] candles; // Array to store candles
     private int currentCandleIndex; // Index of the current active candle
     private bool reduceScale = false; // Variable to control scale reduction
     private float targetScaleFactor = 0.05f; // Target scale factor (5% of original scale)
@@ -13,37 +13,20 @@ public class CandleManager : MonoBehaviour
 
     void Start()
     {
-        // Find all objects with the "CandleFlame" tag
-        GameObject[] allCandles = GameObject.FindGameObjectsWithTag("CandleFlame");
-        
-        // Filter active candles
-        int activeCandlesCount = 0;
-        foreach (GameObject candle in allCandles)
-        {
-            if (candle.activeSelf)
-            {
-                activeCandlesCount++;
-            }
-        }
-
-        // Create an array for active candles
-        candles = new GameObject[activeCandlesCount];
-        int index = 0;
-        foreach (GameObject candle in allCandles)
-        {
-            if (candle.activeSelf)
-            {
-                candles[index] = candle;
-                index++;
-            }
-        }
+        // Find and store candles with the "CandleFlame" tag
+        GameObject[] foundCandles = GameObject.FindGameObjectsWithTag("CandleFlame");
+        // Sort candles based on their order in the hierarchy
+        System.Array.Sort(foundCandles, (candle1, candle2) => candle1.transform.GetSiblingIndex().CompareTo(candle2.transform.GetSiblingIndex()));
+        // Check and store only the active candles
+        candles = System.Array.FindAll(foundCandles, candle => candle.activeSelf);
 
         originalScales = new Vector3[candles.Length];
 
         // Record original scales of active candles
         RecordOriginalScales();
 
-        // Start reducing candles scale
+        // Start reducing candles scale from the first active candle
+        currentCandleIndex = 0; // Start from the first candle
         StartScaleReduction();
     }
 
@@ -68,7 +51,6 @@ public class CandleManager : MonoBehaviour
             {
                 // All candles have been extinguished
                 reduceScale = false;
-                Debug.Log("All candles extinguished!");
             }
         }
     }
@@ -79,8 +61,6 @@ public class CandleManager : MonoBehaviour
         {
             originalScales[i] = candles[i].transform.localScale;
         }
-        // Start with the first candle index
-        currentCandleIndex = 0;
     }
 
     void ReduceCandleScale(GameObject candleObject, int index)
@@ -99,7 +79,16 @@ public class CandleManager : MonoBehaviour
             // Deactivate the candle and move to the next one
             candleObject.SetActive(false);
             currentCandleIndex++;
-            scaleStartTime = Time.time;
+
+            // If all candles have been extinguished, stop reducing scale
+            if (currentCandleIndex >= candles.Length)
+            {
+                reduceScale = false;
+            }
+            else
+            {
+                scaleStartTime = Time.time; // Reset the scale start time for the next candle
+            }
         }
     }
 

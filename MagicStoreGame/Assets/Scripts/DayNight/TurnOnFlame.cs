@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TurnOnFlame : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         // Check if this object is active
         if (gameObject.activeSelf)
