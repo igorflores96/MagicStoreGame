@@ -30,7 +30,6 @@ public class EnchantmentMachine : MonoBehaviour
         if(_isEnchanting)
         {
             _timer -= 1.0f * Time.deltaTime;
-            Debug.Log(_timer);
             if(_timer <= 0.0f)
             {
                 _isEnchanting = false;

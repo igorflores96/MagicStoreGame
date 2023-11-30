@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UseItem",
+                    "name": "UseSpray",
                     "type": "PassThrough",
                     "id": "772a48ff-81ab-440a-9a6f-97f07d6e4990",
                     "expectedControlType": "Axis",
@@ -57,6 +57,15 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseLabel",
+                    "type": "Button",
+                    "id": "b053bc55-6348-413e-b447-5ee8a7444e7e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -288,7 +297,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseItem",
+                    "action": "UseSpray",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -299,7 +308,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseItem",
+                    "action": "UseSpray",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -322,6 +331,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9e15d4b-6c66-4bfe-b242-da6f19b1d39c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseLabel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd5030a8-9ffe-41af-b3a3-3bc1ace393e3",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseLabel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

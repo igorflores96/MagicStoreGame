@@ -11,9 +11,13 @@ public class ScaleMachine : MonoBehaviour
     {
         if(other.gameObject.layer == 20)
         {
-            _objectToScale = other.GetComponent<Item>();
-            _objectToScale.IsScalingUp = false;
-            _objectToScale.IsScalingDown = false;
+            if(other.GetComponent<Item>() == true)
+            {
+                _objectToScale = other.GetComponent<Item>();
+                _objectToScale.IsScalingUp = false;
+                _objectToScale.IsScalingDown = false;
+            }
+
         }
     }
 
