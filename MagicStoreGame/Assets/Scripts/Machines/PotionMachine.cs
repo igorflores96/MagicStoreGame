@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PotionMachine : MonoBehaviour
 {
-    [SerializeField] private int _multiplierVelocityWather;
+    [SerializeField] private float _multiplierVelocityWather;
     [SerializeField] private float _timeToCook;
 
     private Potion _currentPotion;

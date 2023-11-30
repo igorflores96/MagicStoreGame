@@ -224,7 +224,7 @@ public class MovementPlayer : MonoBehaviour
                 Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
                 RaycastHit hit;
 
-                if(_currentItemGrabed.TryGetComponent(out Label label) || _currentItemGrabed.TryGetComponent(out Dye dye))
+                if(_currentItemGrabed.TryGetComponent(out Label label) || _currentItemGrabed.TryGetComponent(out Dye dye) || _currentItemGrabed.TryGetComponent(out OilFlask oil))
                     _currentItemGrabed.GetComponent<Collider>().enabled = false;
 
                 if (Physics.Raycast(ray, out hit, _grabRayCastDistance))
@@ -242,13 +242,17 @@ public class MovementPlayer : MonoBehaviour
                             }
                             else if(_currentItemGrabed.TryGetComponent(out dye))
                             {
-                                potionTemp.DyePotion(dye.DyeColor);
+                                potionTemp.DyePotion(dye);
                             }
                             else if(_currentItemGrabed.TryGetComponent(out LittleLabel littleLabel))
                             {
                                 _currentItemGrabed.transform.rotation = Quaternion.Euler(0, 0, 0);
                                 potionTemp.ChangeLabelName(_currentItemGrabed, littleLabel);
                                 _currentItemGrabed = null;
+                            }
+                            else if(_currentItemGrabed.TryGetComponent(out oil))
+                            {
+                                oil.PuringOil(potionTemp);
                             }
                             
                         }

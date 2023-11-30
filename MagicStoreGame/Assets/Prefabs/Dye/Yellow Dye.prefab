@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dyeColor: {r: 0.6603774, g: 0.52020293, b: 0.2772339, a: 1}
+  _colorName: Yellow Dye
 --- !u!65 &1026587054665619032
 BoxCollider:
   m_ObjectHideFlags: 0
