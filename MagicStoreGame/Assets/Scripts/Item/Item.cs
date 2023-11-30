@@ -12,6 +12,7 @@ public class Item : MonoBehaviour, IItem, IScalable
     [SerializeField] private EnchantmentType _currentElement;
     private bool _isScalingUp;
     private bool _isScalingDown;
+    private bool _isOriginal;
     private int _itemValue;
     public bool scalableFromRecipe;
     public bool isStacking;
@@ -37,15 +38,12 @@ public class Item : MonoBehaviour, IItem, IScalable
     }
     public void Scale(float scalingVal)
     {
-        // Calcula a nova escala usando a taxa de escalamento
         Vector3 novaEscala2 = transform.localScale + new Vector3(scalingVal, scalingVal, scalingVal);
 
-        // Garante que a nova escala n�o ultrapasse o tamanho m�ximo usando Mathf.Clamp
         novaEscala2.x = Mathf.Clamp(novaEscala2.x, _maxSizeDown, _maxSizeUp);
         novaEscala2.y = Mathf.Clamp(novaEscala2.y, _maxSizeDown, _maxSizeUp);
         novaEscala2.z = Mathf.Clamp(novaEscala2.z, _maxSizeDown, _maxSizeUp);
 
-        // Aplica a nova escala ao objeto
         transform.localScale = novaEscala2;
     }
 
@@ -84,5 +82,11 @@ public class Item : MonoBehaviour, IItem, IScalable
     {
         get {return _currentElement;}
         set {_currentElement = value;}
+    }
+
+    public bool OriginalItem
+    {
+        get {return _isOriginal;}
+        set {_isOriginal = value;}
     }
 }

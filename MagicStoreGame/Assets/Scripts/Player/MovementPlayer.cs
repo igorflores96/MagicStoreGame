@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
-using System.Security.Cryptography;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -14,10 +13,10 @@ public class MovementPlayer : MonoBehaviour
     [Header("Câmera and Grab Point Transforms")]
     [SerializeField] private Transform _cameraTransform;
     [SerializeField] private Transform _grabPointTransform;
-    [SerializeField] private Transform _dot;
     
     [Header("Variables to movement")]
-    [SerializeField] private float _playerSpeed;
+    [SerializeField] private float _playerMoveSpeed;
+    [SerializeField] private float _playerRunSpeed;
     [SerializeField] private float _mouseSensitivity;
     [SerializeField] private float _maxLookUp;
     [SerializeField] private float _maxLookDown;
@@ -29,6 +28,8 @@ public class MovementPlayer : MonoBehaviour
     [Header("Layers of Action")]
     [SerializeField] private LayerMask _layerButton;
     [SerializeField] private LayerMask _layerMachineEnchant;
+    [SerializeField] private LayerMask _layerStorage;
+
 
     private PlayerMovement _playerMovement;
     private float _rotationX = 0;
@@ -51,18 +52,17 @@ public class MovementPlayer : MonoBehaviour
 
         _playerMovement = new PlayerMovement();
       
-      _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
-      _playerMovement.MovementPlayer.UseMachine.performed += UsingMachine;  //microondas, box collider = adicionar layer 10 de botao na alavanca
-      _playerMovement.MovementPlayer.UseItem.started += UsingSpray;
-      _playerMovement.MovementPlayer.UseItem.canceled += StopUsingSpray;
-
-      _playerMovement.MovementPlayer.Enable();      
+        _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
+        _playerMovement.MovementPlayer.UseMachine.performed += UseButton;  //microondas, box collider = adicionar layer 10 de botao na alavanca
+        _playerMovement.MovementPlayer.UseLabel.performed += UseLabel;
+        _playerMovement.MovementPlayer.Enable();      
     }
 
     void Update()
     {
         MovePlayer();
         CameraLook();
+        UseItem();
     }
 
     private void GrabItem(InputAction.CallbackContext context)
@@ -73,20 +73,36 @@ public class MovementPlayer : MonoBehaviour
             if(_currentItemGrabed == null)
             {
                 RaycastHit hit;
+                Item tempItem;
+                EnchantmentSpray spray;
+                
 
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerGrabItem))
                 {
                     _currentItemGrabed = hit.transform;
                     _currentItemGrabed.rotation = Quaternion.identity;
-                    Item tempItem;
-                    Rigidbody tempRb;
-                    EnchantmentSpray spray;
-                    isGrabbed = true;
-                    if (_currentItemGrabed.TryGetComponent(out tempRb))
-                    {
-                        tempRb.freezeRotation = true;
-                    }
                         
+                    if (_currentItemGrabed.TryGetComponent(out tempItem))
+                    {
+                        tempItem.IsScalingUp = false;
+                        tempItem.IsScalingDown = false;
+                    }
+                    isGrabbed = true;
+                    if (_currentItemGrabed.TryGetComponent(out spray))
+                    {
+                        OnSprayPickedUp.Invoke(spray.EnchantmentTypeSpray);
+                    }
+                }
+                else if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerStorage))
+                {
+
+                    Storage tempStorage;
+                    
+                    if(hit.transform.TryGetComponent(out tempStorage))
+                    {
+                        _currentItemGrabed = tempStorage.GetItemFromStorage();
+                    }
+            
                     if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
                         tempItem.IsScalingUp = false;
@@ -101,13 +117,12 @@ public class MovementPlayer : MonoBehaviour
             }
             else
             {
-
-                Rigidbody tempRb;
-
-                if(_currentItemGrabed.TryGetComponent(out tempRb))
+                Rigidbody temp;
+                if(_currentItemGrabed.TryGetComponent(out temp))
                 {
-                    tempRb.constraints = RigidbodyConstraints.None;
+                    temp.constraints = RigidbodyConstraints.None;
                 }
+                _currentItemGrabed.rotation = Quaternion.identity;
                 _currentItemGrabed = null;
                 isGrabbed = false;
             }
@@ -119,6 +134,7 @@ public class MovementPlayer : MonoBehaviour
     {
         float inputVectorValueX = _playerMovement.MovementPlayer.Movement.ReadValue<Vector2>().x;
         float inputVectorValueY = _playerMovement.MovementPlayer.Movement.ReadValue<Vector2>().y;
+        bool isRunning = _playerMovement.MovementPlayer.Run.ReadValue<float>() > 0.1f;
         
         Vector3 cameraForward = _cameraTransform.forward;
         Vector3 cameraRight = _cameraTransform.right;
@@ -126,7 +142,11 @@ public class MovementPlayer : MonoBehaviour
 
         Vector3 moveDirection = (cameraForward.normalized * inputVectorValueY + cameraRight.normalized * inputVectorValueX).normalized;
 
-        _characterController.Move(moveDirection * _playerSpeed * Time.deltaTime);
+        if(!isRunning)
+            _characterController.Move(moveDirection * _playerMoveSpeed * Time.deltaTime);
+        else
+            _characterController.Move(moveDirection * _playerRunSpeed * Time.deltaTime);
+
     }
 
     private void CameraLook()
@@ -140,11 +160,9 @@ public class MovementPlayer : MonoBehaviour
 
         _cameraTransform.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, mouseX * _mouseSensitivity, 0);
-
-        _dot.transform.position = _cameraTransform.position + (_cameraTransform.forward * 0.5f);
     }
 
-    private void UsingMachine(InputAction.CallbackContext context)
+    private void UseButton(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
@@ -165,34 +183,87 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    private void UsingSpray(InputAction.CallbackContext context)
+    private void UseItem()
     {
-        if(_currentItemGrabed != null)
+        bool usingItem = _playerMovement.MovementPlayer.UseSpray.ReadValue<float>() > 0.1f;
+
+        if(usingItem)
         {
-            if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, _grabRayCastDistance, _layerMachineEnchant))
-            {   
+            if(_currentItemGrabed != null)
+            {
+                if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, _grabRayCastDistance, _layerMachineEnchant))
+                {   
+                    EnchantmentSpray spray;
+                    if(_currentItemGrabed.TryGetComponent(out spray))
+                    {
+                        spray.Use();
+                    }
+
+                }
+            }
+        }
+        else
+        {
+            if(_currentItemGrabed != null)
+            {
                 EnchantmentSpray spray;
+
                 if(_currentItemGrabed.TryGetComponent(out spray))
                 {
-                    spray.Use();
+                    spray.StopUse();
                 }
 
-            }
+            } 
         }
     }
 
-    private void StopUsingSpray(InputAction.CallbackContext context)
+    private void UseLabel(InputAction.CallbackContext context)
     {
-        if(_currentItemGrabed != null)
+        if(context.performed)
         {
-            EnchantmentSpray spray;
-
-            if(_currentItemGrabed.TryGetComponent(out spray))
+            if (_currentItemGrabed != null)
             {
-                spray.StopUse();
-            }
+                
+                Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+                RaycastHit hit;
 
-        } 
+                if(_currentItemGrabed.TryGetComponent(out Label label) || _currentItemGrabed.TryGetComponent(out Dye dye) || _currentItemGrabed.TryGetComponent(out OilFlask oil))
+                    _currentItemGrabed.GetComponent<Collider>().enabled = false;
+
+                if (Physics.Raycast(ray, out hit, _grabRayCastDistance))
+                {
+                    if (hit.collider.CompareTag("Potion"))
+                    {
+                        Potion potionTemp;
+                        if(hit.transform.TryGetComponent(out potionTemp))
+                        { 
+                            if(_currentItemGrabed.TryGetComponent(out label))
+                            {
+                                _currentItemGrabed.transform.rotation = Quaternion.identity;
+                                potionTemp.StickTheLabel(_currentItemGrabed, label);
+                                _currentItemGrabed = null;
+                            }
+                            else if(_currentItemGrabed.TryGetComponent(out dye))
+                            {
+                                potionTemp.DyePotion(dye);
+                            }
+                            else if(_currentItemGrabed.TryGetComponent(out LittleLabel littleLabel))
+                            {
+                                _currentItemGrabed.transform.rotation = Quaternion.Euler(0, 0, 0);
+                                potionTemp.ChangeLabelName(_currentItemGrabed, littleLabel);
+                                _currentItemGrabed = null;
+                            }
+                            else if(_currentItemGrabed.TryGetComponent(out oil))
+                            {
+                                oil.PuringOil(potionTemp);
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     private void SetMachineDown(Buttons button)
@@ -226,6 +297,10 @@ public class MovementPlayer : MonoBehaviour
         _grabPointTransform.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
 
         if(_currentItemGrabed != null)
+        {
             _currentItemGrabed.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
+            _currentItemGrabed.LookAt(new Vector3(_cameraTransform.position.x, _cameraTransform.position.y, 0.0f));
+        }
+            
     }
 }

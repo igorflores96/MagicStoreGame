@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PotionMachine : MonoBehaviour
 {
-    [SerializeField] private int _multiplierVelocityWather;
+    [SerializeField] private float _multiplierVelocityWather;
+    [SerializeField] private float _timeToCook;
+
     private Potion _currentPotion;
 
     private void OnTriggerStay(Collider other) 
@@ -22,6 +24,7 @@ public class PotionMachine : MonoBehaviour
             if(_currentPotion != null)
             {
                 _currentPotion.IsPouring = false;
+                _currentPotion.StopCooking();
             }
 
             _currentPotion = null;
@@ -32,5 +35,11 @@ public class PotionMachine : MonoBehaviour
     {
         if(_currentPotion != null)
             _currentPotion.StartingPouringWater(true, _multiplierVelocityWather);
+    }
+
+    public void UseFire()
+    {
+        if(_currentPotion != null)
+            _currentPotion.CookPotion(_timeToCook);
     }
 }

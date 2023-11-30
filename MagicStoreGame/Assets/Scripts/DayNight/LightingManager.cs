@@ -7,23 +7,12 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private LightingPreset Preset;
 
     private float TimeOfDay;
-    private int numberOfCandles = 5; // Este valor será atualizado pelo CandleHolder
-    [SerializeField] private float secondsPerCandle = 60f; // Segundos por vela
+    private int activeCandles; // Este valor será atualizado pelo CandleHolder
+    [SerializeField] private float secondsPerCandle; // Segundos por vela
 
     private void Start()
     {
-        // Encontra o CandleHolder na cena
-        CandleHolder candleHolder = FindObjectOfType<CandleHolder>();
-
-        if (candleHolder != null)
-        {
-            // Obtém o número de velas do CandleHolder
-            numberOfCandles = candleHolder.activeCandles;
-        }
-        else
-        {
-            Debug.LogError("CandleHolder não encontrado na cena.");
-        }
+        UpdateCandles();
     }
 
     private void Update()
@@ -35,14 +24,19 @@ public class LightingManager : MonoBehaviour
         {
             float elapsedTime = Time.time; // Tempo decorrido desde o início do jogo
 
-            float totalSecondsForDay = numberOfCandles * secondsPerCandle; // Total de segundos para o dia
-            TimeOfDay = Mathf.Lerp(6f, 19f, elapsedTime / totalSecondsForDay); // Calcula o tempo do dia baseado no tempo decorrido e na duração total do dia
+            UpdateTimeOfDay(elapsedTime);
             UpdateLighting(TimeOfDay / 24f);
         }
         else
         {
             UpdateLighting(TimeOfDay / 24f);
         }
+    }
+
+    private void UpdateTimeOfDay(float elapsedTime)
+    {
+        float totalSecondsForDay = activeCandles * secondsPerCandle; // Total de segundos para o dia
+        TimeOfDay = Mathf.Lerp(6f, 19f, elapsedTime / totalSecondsForDay); // Calcula o tempo do dia baseado no tempo decorrido e na duração total do dia
     }
 
     private void UpdateLighting(float timePercent)
@@ -55,6 +49,21 @@ public class LightingManager : MonoBehaviour
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
             DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 350f, 0));
+        }
+    }
+
+    private void UpdateCandles()
+    {
+        activeCandles = 0;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+
+            if (child.activeSelf)
+            {
+                activeCandles++;
+            }
         }
     }
 
@@ -77,6 +86,31 @@ public class LightingManager : MonoBehaviour
                     DirectionalLight = light;
                     return;
                 }
+            }
+        }
+    }
+}
+
+public class CandleHolder : MonoBehaviour
+{
+    public int activeCandles { get; private set; } = 0;
+
+    private void Start()
+    {
+        CountActiveCandles();
+    }
+
+    private void CountActiveCandles()
+    {
+        activeCandles = 0;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+
+            if (child.activeSelf)
+            {
+                activeCandles++;
             }
         }
     }

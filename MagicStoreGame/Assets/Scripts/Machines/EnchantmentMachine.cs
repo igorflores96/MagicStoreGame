@@ -30,7 +30,6 @@ public class EnchantmentMachine : MonoBehaviour
         if(_isEnchanting)
         {
             _timer -= 1.0f * Time.deltaTime;
-            Debug.Log(_timer);
             if(_timer <= 0.0f)
             {
                 _isEnchanting = false;
@@ -54,6 +53,7 @@ public class EnchantmentMachine : MonoBehaviour
             var mainModule = _objectToEnchant.main; //Only way to access the startcolor
             _objectToEnchant.Play();
             mainModule.startColor = _colors[(int)_currentEnchantment];
+            _timer = _timeToEnchant;
         }
     }
 

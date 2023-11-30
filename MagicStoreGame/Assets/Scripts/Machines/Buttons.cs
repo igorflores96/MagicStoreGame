@@ -27,7 +27,7 @@ public class Buttons : MonoBehaviour
 
     public void SetFireOn()
     {
-        Debug.Log("Ligou o Fogo");
+        _potionMachine.UseFire();
     }
     public void FusionItem()
     {

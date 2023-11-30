@@ -13,6 +13,8 @@ TagManager:
   - Result
   - FxTemporaire
   - RecipeObject
+  - CandleFlame
+  - Potion
   - FoodRecipe
   - Stacked
   - ResultSub
@@ -42,7 +44,7 @@ TagManager:
   - ButtonDown
   - 
   - 
-  - 
+  - Storage
   - 
   - 
   - 
