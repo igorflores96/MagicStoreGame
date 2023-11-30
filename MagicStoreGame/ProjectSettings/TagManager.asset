@@ -14,6 +14,7 @@ TagManager:
   - FxTemporaire
   - RecipeObject
   - CandleFlame
+  - Potion
   layers:
   - Default
   - TransparentFX
