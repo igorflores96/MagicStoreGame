@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cd34abf988a8b4f80ee6186cd81c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSizeUp: 0
-  _maxSizeDown: 0
-  _scalePerFrame: 0
+  _maxSizeUp: 8
+  _maxSizeDown: 5
+  _scalePerFrame: 0.1
   _itemName: Ring
   _currentElement: 5
   scalableFromRecipe: 1
@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 6512811557346509215}
   - component: {fileID: 6512811557346509210}
   - component: {fileID: 6512811557346509209}
-  - component: {fileID: 6512811557346509208}
   m_Layer: 20
   m_Name: Cube
   m_TagString: Untagged
@@ -218,16 +217,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6512811557346509208
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512811557346509214}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

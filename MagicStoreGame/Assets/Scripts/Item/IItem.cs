@@ -8,5 +8,5 @@ public interface IItem
     public string NameItem {get;set;}
     public EnchantmentType EnchantmentItem {get;set;}
 
-    public int IncreaseValueItem(int multiplier);
+    public int ChangeValueItem(int multiplier);
 }

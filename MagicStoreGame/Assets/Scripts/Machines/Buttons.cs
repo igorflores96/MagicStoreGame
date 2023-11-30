@@ -7,7 +7,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private ScaleMachine _scaleMachine;
     [SerializeField] private PotionMachine _potionMachine;
     [SerializeField] private Microwave _microwave;
-
+    [SerializeField] private SubWitch _subWitch;
     [SerializeField] private string _buttonName;
 
     public void SetScaleMachineUp()
@@ -32,6 +32,10 @@ public class Buttons : MonoBehaviour
     public void FusionItem()
     {
        StartCoroutine(_microwave.Timer());
+    }
+    public void VerificarItem()
+    {
+        StartCoroutine(_subWitch.Timer());
     }
     public string ButtonName
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Plate : MonoBehaviour
 {
     private List<GameObject> collidedObjects = new List<GameObject>();
-    private int countItem;
     public bool isUpgraded;
     public Microwave microwave;
     void OnTriggerEnter(Collider collision)

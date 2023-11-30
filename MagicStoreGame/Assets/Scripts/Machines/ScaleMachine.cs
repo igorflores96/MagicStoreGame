@@ -6,7 +6,6 @@ using UnityEngine;
 public class ScaleMachine : MonoBehaviour
 {
     private Item _objectToScale;
-
     private void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.layer == 20)

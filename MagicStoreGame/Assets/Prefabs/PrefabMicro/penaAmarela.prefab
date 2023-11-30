@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cd34abf988a8b4f80ee6186cd81c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSizeUp: 0
-  _maxSizeDown: 0
-  _scalePerFrame: 0
+  _maxSizeUp: 3
+  _maxSizeDown: 0.3
+  _scalePerFrame: 0.1
   _itemName: YellowFeather
   _currentElement: 4
   scalableFromRecipe: 0

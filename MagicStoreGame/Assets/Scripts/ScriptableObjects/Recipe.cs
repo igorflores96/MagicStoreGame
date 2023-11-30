@@ -12,6 +12,7 @@ public class Recipe : ScriptableObject
     public GameObject RecipeItemPrefab;
     public List<Item> RecipeItems;
     public EnchantmentType RecipeEnchantment;
+    public bool isUpgradedSub;
 
 }
 

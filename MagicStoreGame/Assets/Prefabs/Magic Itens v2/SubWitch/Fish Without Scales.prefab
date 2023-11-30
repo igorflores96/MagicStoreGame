@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2306289603890482245}
   - component: {fileID: 4591484823700068448}
   - component: {fileID: 5236490259453090222}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Lingua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7127006359876906261}
   - component: {fileID: 6819398486090801703}
   - component: {fileID: 8589438057411139362}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Olhos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4722484775611652889}
   - component: {fileID: 3356043279093057181}
   - component: {fileID: 881927862156757819}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Palpebra Baixo E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,9 +263,12 @@ GameObject:
   - component: {fileID: 6236936081974188350}
   - component: {fileID: 6999112546194839195}
   - component: {fileID: 5099517950696399441}
-  m_Layer: 0
+  - component: {fileID: 3865936746780739208}
+  - component: {fileID: 4953665797358249396}
+  - component: {fileID: 732465236350951435}
+  m_Layer: 20
   m_Name: Fish Without Scales
-  m_TagString: Untagged
+  m_TagString: FoodRecipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,9 +280,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6757049803685954436}
-  m_LocalRotation: {x: -0.5000007, y: 0.50000215, z: 0.49999943, w: -0.49999782}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: -20.83438, y: 29.405354, z: -5.915558}
-  m_LocalScale: {x: 23.193844, y: 21.37874, z: 23.193844}
+  m_LocalScale: {x: 11.427795, y: 10.533479, z: 11.427795}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2306289603890482245}
@@ -338,6 +341,54 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3865936746780739208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757049803685954436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cd34abf988a8b4f80ee6186cd81c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSizeUp: 0
+  _maxSizeDown: 0
+  _scalePerFrame: 0
+  _itemName: Fish
+  _currentElement: 4
+  scalableFromRecipe: 0
+  isStacking: 0
+--- !u!54 &4953665797358249396
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757049803685954436}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &732465236350951435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757049803685954436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016098794, y: 0.053172227, z: 0.022088278}
+  m_Center: {x: 6.602267e-10, y: 0.0023604215, z: -2.5937208e-10}
 --- !u!1 &6795646666769020840
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +400,7 @@ GameObject:
   - component: {fileID: 6817377110715692176}
   - component: {fileID: 694936376454994950}
   - component: {fileID: 2944782300074224557}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Nadadeiras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +483,7 @@ GameObject:
   - component: {fileID: 950617615525264374}
   - component: {fileID: 431479904964382630}
   - component: {fileID: 1322799223751625140}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Palpebra Baixo D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +566,7 @@ GameObject:
   - component: {fileID: 2978288862637652419}
   - component: {fileID: 328814849732107981}
   - component: {fileID: 2140401507599630380}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Palpebra Cima
   m_TagString: Untagged
   m_Icon: {fileID: 0}

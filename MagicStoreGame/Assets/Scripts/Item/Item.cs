@@ -14,7 +14,7 @@ public class Item : MonoBehaviour, IItem, IScalable
     private bool _isScalingDown;
     private int _itemValue;
     public bool scalableFromRecipe;
-
+    public bool isStacking;
     
     private void Awake() 
     {
@@ -49,7 +49,7 @@ public class Item : MonoBehaviour, IItem, IScalable
         transform.localScale = novaEscala2;
     }
 
-    public int IncreaseValueItem(int multiplier)
+    public int ChangeValueItem(int multiplier)
     {
         _itemValue *= multiplier;
 

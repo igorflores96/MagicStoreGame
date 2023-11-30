@@ -13,6 +13,9 @@ TagManager:
   - Result
   - FxTemporaire
   - RecipeObject
+  - FoodRecipe
+  - Stacked
+  - ResultSub
   layers:
   - Default
   - TransparentFX

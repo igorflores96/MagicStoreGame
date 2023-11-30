@@ -37,6 +37,7 @@ public class MovementPlayer : MonoBehaviour
     private Dictionary<string, Action<Buttons>> _buttonActions = new Dictionary<string, Action<Buttons>>();
 
     public static UnityEvent<EnchantmentType> OnSprayPickedUp = new UnityEvent<EnchantmentType>();
+    public bool isGrabbed = false;
 
     void Awake()
     {
@@ -45,6 +46,7 @@ public class MovementPlayer : MonoBehaviour
         _buttonActions["ButtonWater"] = TurnOnWater;
         _buttonActions["ButtonFire"] = TurnOnFire;
         _buttonActions["LeverMicro"] = FusionItem;
+        _buttonActions["DoorSub"] = VerificarItem;
 
 
         _playerMovement = new PlayerMovement();
@@ -79,8 +81,8 @@ public class MovementPlayer : MonoBehaviour
                     Item tempItem;
                     Rigidbody tempRb;
                     EnchantmentSpray spray;
-
-                    if(_currentItemGrabed.TryGetComponent(out tempRb))
+                    isGrabbed = true;
+                    if (_currentItemGrabed.TryGetComponent(out tempRb))
                     {
                         tempRb.freezeRotation = true;
                     }
@@ -107,6 +109,7 @@ public class MovementPlayer : MonoBehaviour
                     tempRb.constraints = RigidbodyConstraints.None;
                 }
                 _currentItemGrabed = null;
+                isGrabbed = false;
             }
 
         }
@@ -213,6 +216,10 @@ public class MovementPlayer : MonoBehaviour
     private void FusionItem(Buttons button)
     {
         button.FusionItem();
+    }
+    private void VerificarItem(Buttons button)
+    {
+        button.VerificarItem();
     }
     private void LateUpdate() 
     {
