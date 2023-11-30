@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
-using System.Security.Cryptography;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -51,10 +50,10 @@ public class MovementPlayer : MonoBehaviour
 
         _playerMovement = new PlayerMovement();
       
-      _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
-      _playerMovement.MovementPlayer.UseMachine.performed += UseButton;  //microondas, box collider = adicionar layer 10 de botao na alavanca
-
-      _playerMovement.MovementPlayer.Enable();      
+        _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
+        _playerMovement.MovementPlayer.UseMachine.performed += UseButton;  //microondas, box collider = adicionar layer 10 de botao na alavanca
+        _playerMovement.MovementPlayer.UseLabel.performed += UseLabel;
+        _playerMovement.MovementPlayer.Enable();      
     }
 
     void Update()
@@ -73,19 +72,13 @@ public class MovementPlayer : MonoBehaviour
             {
                 RaycastHit hit;
                 Item tempItem;
-                Rigidbody tempRb;
                 EnchantmentSpray spray;
+                
 
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerGrabItem))
                 {
                     _currentItemGrabed = hit.transform;
                     _currentItemGrabed.rotation = Quaternion.identity;
-
-
-                    if(_currentItemGrabed.TryGetComponent(out tempRb))
-                    {
-                        tempRb.freezeRotation = true;
-                    }
                         
                     if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
@@ -107,14 +100,7 @@ public class MovementPlayer : MonoBehaviour
                     {
                         _currentItemGrabed = tempStorage.GetItemFromStorage();
                     }
-
-                    _currentItemGrabed.rotation = Quaternion.identity;
-
-                    if(_currentItemGrabed.TryGetComponent(out tempRb))
-                    {
-                        tempRb.freezeRotation = true;
-                    }
-                        
+            
                     if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
                         tempItem.IsScalingUp = false;
@@ -129,13 +115,12 @@ public class MovementPlayer : MonoBehaviour
             }
             else
             {
-
-                Rigidbody tempRb;
-
-                if(_currentItemGrabed.TryGetComponent(out tempRb))
+                Rigidbody temp;
+                if(_currentItemGrabed.TryGetComponent(out temp))
                 {
-                    tempRb.constraints = RigidbodyConstraints.None;
+                    temp.constraints = RigidbodyConstraints.None;
                 }
+                _currentItemGrabed.rotation = Quaternion.identity;
                 _currentItemGrabed = null;
             }
 
@@ -158,6 +143,7 @@ public class MovementPlayer : MonoBehaviour
             _characterController.Move(moveDirection * _playerMoveSpeed * Time.deltaTime);
         else
             _characterController.Move(moveDirection * _playerRunSpeed * Time.deltaTime);
+
     }
 
     private void CameraLook()
@@ -196,7 +182,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void UseItem()
     {
-        bool usingItem = _playerMovement.MovementPlayer.UseItem.ReadValue<float>() > 0.1f;
+        bool usingItem = _playerMovement.MovementPlayer.UseSpray.ReadValue<float>() > 0.1f;
 
         if(usingItem)
         {
@@ -228,6 +214,51 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    private void UseLabel(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if (_currentItemGrabed != null)
+            {
+                
+                Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+                RaycastHit hit;
+
+                if(_currentItemGrabed.TryGetComponent(out Label label) || _currentItemGrabed.TryGetComponent(out Dye dye))
+                    _currentItemGrabed.GetComponent<Collider>().enabled = false;
+
+                if (Physics.Raycast(ray, out hit, _grabRayCastDistance))
+                {
+                    if (hit.collider.CompareTag("Potion"))
+                    {
+                        Potion potionTemp;
+                        if(hit.transform.TryGetComponent(out potionTemp))
+                        { 
+                            if(_currentItemGrabed.TryGetComponent(out label))
+                            {
+                                _currentItemGrabed.transform.rotation = Quaternion.identity;
+                                potionTemp.StickTheLabel(_currentItemGrabed, label);
+                                _currentItemGrabed = null;
+                            }
+                            else if(_currentItemGrabed.TryGetComponent(out dye))
+                            {
+                                potionTemp.DyePotion(dye.DyeColor);
+                            }
+                            else if(_currentItemGrabed.TryGetComponent(out LittleLabel littleLabel))
+                            {
+                                _currentItemGrabed.transform.rotation = Quaternion.Euler(0, 0, 0);
+                                potionTemp.ChangeLabelName(_currentItemGrabed, littleLabel);
+                                _currentItemGrabed = null;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
     private void SetMachineDown(Buttons button)
     {
         button.SetScaleMachineDown();
@@ -255,6 +286,10 @@ public class MovementPlayer : MonoBehaviour
         _grabPointTransform.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
 
         if(_currentItemGrabed != null)
+        {
             _currentItemGrabed.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
+            _currentItemGrabed.LookAt(new Vector3(_cameraTransform.position.x, _cameraTransform.position.y, 0.0f));
+        }
+            
     }
 }
