@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,18 +13,19 @@ public class Potion : MonoBehaviour, IItem
     [SerializeField] private Transform _mindPosition;
     [SerializeField] private Transform _wisdomPosition;
     [SerializeField] private Transform _youthPosition;
+    [SerializeField] private GameObject _whater;
+    [SerializeField] private GameObject _dye;
     [SerializeField] private GameObject _stopper;
-
-    private Label _currentLabel;
     private Color _potionColor;
     private int _colorQuantity;
     private int _itemValue;
     private EnchantmentType _currentElement;
     private float _currentMl;
     private int _velocityWater;
-    private bool _isPouring;
+    private bool _isPouringWater;
     private bool _stickLabel;
     private bool _dyePotion;
+    private Coroutine startFireCoroutine;
 
     void OnEnable()
     {
@@ -36,12 +38,23 @@ public class Potion : MonoBehaviour, IItem
 
     void Update()
     {
-        if(_isPouring)
+        if(_isPouringWater)
         {
             if(_currentMl < _potionMaxMl)
             {
                 _currentMl += 1.0f * _velocityWater * Time.deltaTime;
-                Debug.Log(_currentMl);
+                float scale;
+                
+                if(_potionMaxMl == 15.0f)
+                    scale = 0.018f;
+                else
+                    scale = 1.6f;
+
+                float newScaleY = Mathf.Clamp(_currentMl / _potionMaxMl, 0.0f, 1.0f) * scale;
+                
+                    
+                _whater.SetActive(true);
+                _whater.transform.localScale = new Vector3(_whater.transform.localScale.x, newScaleY, _whater.transform.localScale.z);
             }
             else
             {
@@ -53,7 +66,7 @@ public class Potion : MonoBehaviour, IItem
     public void StartingPouringWater(bool status, int velocity)
     {
         _velocityWater = velocity;
-        _isPouring = status;
+        _isPouringWater = status;
     }
 
     public void StickTheLabel(Transform labelToStick, Label label)
@@ -95,10 +108,11 @@ public class Potion : MonoBehaviour, IItem
     {
         if(!_dyePotion || _potionColor == color)
         {
+            _dye.SetActive(true);
+            _dye.GetComponentInChildren<MeshRenderer>().material.color = color;
             _potionColor = color;
             _colorQuantity++;
             _dyePotion = true;
-            Debug.Log(_colorQuantity);
         }
     }
 
@@ -109,10 +123,46 @@ public class Potion : MonoBehaviour, IItem
         return _itemValue;
     }
 
+    public void StopCooking()
+    {
+        if (startFireCoroutine != null)
+        {
+            Debug.Log("Parou de cozinhar");
+            StopCoroutine(startFireCoroutine);
+            startFireCoroutine = null; 
+        }
+    }
+
+    public void CookPotion(float timeToCook)
+    {
+        if(_currentMl >= _potionMaxMl && _dyePotion)
+        {
+            if (startFireCoroutine != null)
+            {
+                StopCoroutine(startFireCoroutine);
+            }
+
+            startFireCoroutine = StartCoroutine(StartFire(timeToCook));
+        }
+
+    }
+
+    IEnumerator StartFire(float timeToCook)
+    {
+        yield return new WaitForSeconds(timeToCook);
+        
+        _stopper.SetActive(true);
+        _dye.SetActive(false);
+        _whater.GetComponentInChildren<MeshRenderer>().material.color = _potionColor;
+        startFireCoroutine = null; 
+    }
+
+
+
     public bool IsPouring
     {
-        get {return _isPouring;}
-        set {_isPouring = value;}
+        get {return _isPouringWater;}
+        set {_isPouringWater = value;}
     }
 
     public int ValueItem
