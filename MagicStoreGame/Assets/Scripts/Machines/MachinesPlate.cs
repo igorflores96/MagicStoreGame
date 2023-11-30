@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MachinesPlate : MonoBehaviour
 {
+    [SerializeField] private float _yOffSet;
     private bool _haveItem;
     private void OnTriggerStay(Collider other) 
     {
@@ -16,7 +17,7 @@ public class MachinesPlate : MonoBehaviour
                 tempRb.constraints = RigidbodyConstraints.FreezeAll;
             }
 
-            other.transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
+            other.transform.position = new Vector3(transform.position.x, transform.position.y + _yOffSet, transform.position.z);
             other.transform.rotation = Quaternion.identity;
             _haveItem = true; 
         }
