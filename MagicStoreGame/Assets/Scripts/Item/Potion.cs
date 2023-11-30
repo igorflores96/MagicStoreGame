@@ -8,8 +8,10 @@ public class Potion : MonoBehaviour, IItem
     [SerializeField] private float _potionMaxMl;
     [SerializeField] private string _itemName;
     [SerializeField] private Transform _labelPosition;
-    [SerializeField] private Transform _littleLabelPosition;
-
+    [SerializeField] private Transform _harmonyPositon;
+    [SerializeField] private Transform _mindPosition;
+    [SerializeField] private Transform _wisdomPosition;
+    [SerializeField] private Transform _youthPosition;
     [SerializeField] private GameObject _stopper;
 
     private Label _currentLabel;
@@ -74,17 +76,16 @@ public class Potion : MonoBehaviour, IItem
 
             Destroy(littleLabelToStick.GetComponent<Collider>());
             Destroy(littleLabelToStick.GetComponent<Rigidbody>());
-            littleLabelToStick.position = _littleLabelPosition.position;
             littleLabelToStick.parent = this.transform;
             switch (_itemName)
             {
-                case "Potion Of Wisdom": _itemName = "Potion Of " + label.LittleLabelName;
+                case "Potion Of Wisdom": _itemName = "Potion Of " + label.LittleLabelName; littleLabelToStick.position = _wisdomPosition.position;
                 break;
-                case "Potion Of Eternal Youth": _itemName = "Potion Of Eternal " + label.LittleLabelName;
+                case "Potion Of Eternal Youth": _itemName = "Potion Of Eternal " + label.LittleLabelName; littleLabelToStick.position = _youthPosition.position;
                 break;
-                case "Harmony Elixir": _itemName = label.LittleLabelName + " Elixir";
+                case "Harmony Elixir": _itemName = label.LittleLabelName + " Elixir"; littleLabelToStick.position = _harmonyPositon.position;
                 break;
-                case "Elixir Of Mind Control": _itemName = "Elixir Of " + label.LittleLabelName + " Control";
+                case "Elixir Of Mind Control": _itemName = "Elixir Of " + label.LittleLabelName + " Control"; littleLabelToStick.position = _mindPosition.position;
                 break;
             }
         }

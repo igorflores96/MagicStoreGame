@@ -72,7 +72,6 @@ public class MovementPlayer : MonoBehaviour
             {
                 RaycastHit hit;
                 Item tempItem;
-                Rigidbody tempRb;
                 EnchantmentSpray spray;
                 
 
@@ -80,11 +79,6 @@ public class MovementPlayer : MonoBehaviour
                 {
                     _currentItemGrabed = hit.transform;
                     _currentItemGrabed.rotation = Quaternion.identity;
-
-                    if(_currentItemGrabed.TryGetComponent(out tempRb))
-                    {
-                        tempRb.freezeRotation = true;
-                    }
                         
                     if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
@@ -106,14 +100,7 @@ public class MovementPlayer : MonoBehaviour
                     {
                         _currentItemGrabed = tempStorage.GetItemFromStorage();
                     }
-
-                    _currentItemGrabed.rotation = Quaternion.identity;
-
-                    if(_currentItemGrabed.TryGetComponent(out tempRb))
-                    {
-                        tempRb.freezeRotation = true;
-                    }
-                        
+            
                     if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
                         tempItem.IsScalingUp = false;
@@ -128,13 +115,12 @@ public class MovementPlayer : MonoBehaviour
             }
             else
             {
-
-                Rigidbody tempRb;
-
-                if(_currentItemGrabed.TryGetComponent(out tempRb))
+                Rigidbody temp;
+                if(_currentItemGrabed.TryGetComponent(out temp))
                 {
-                    tempRb.constraints = RigidbodyConstraints.None;
+                    temp.constraints = RigidbodyConstraints.None;
                 }
+                _currentItemGrabed.rotation = Quaternion.identity;
                 _currentItemGrabed = null;
             }
 
@@ -250,6 +236,7 @@ public class MovementPlayer : MonoBehaviour
                         { 
                             if(_currentItemGrabed.TryGetComponent(out label))
                             {
+                                _currentItemGrabed.transform.rotation = Quaternion.identity;
                                 potionTemp.StickTheLabel(_currentItemGrabed, label);
                                 _currentItemGrabed = null;
                             }
@@ -259,6 +246,7 @@ public class MovementPlayer : MonoBehaviour
                             }
                             else if(_currentItemGrabed.TryGetComponent(out LittleLabel littleLabel))
                             {
+                                _currentItemGrabed.transform.rotation = Quaternion.Euler(0, 0, 0);
                                 potionTemp.ChangeLabelName(_currentItemGrabed, littleLabel);
                                 _currentItemGrabed = null;
                             }
@@ -298,6 +286,10 @@ public class MovementPlayer : MonoBehaviour
         _grabPointTransform.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
 
         if(_currentItemGrabed != null)
+        {
             _currentItemGrabed.position = _cameraTransform.position + (_cameraTransform.forward * 2.0f);
+            _currentItemGrabed.LookAt(new Vector3(_cameraTransform.position.x, _cameraTransform.position.y, 0.0f));
+        }
+            
     }
 }

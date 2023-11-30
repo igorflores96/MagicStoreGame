@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &29234779839263674
+--- !u!1 &2440496404627441186
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 29234779839263675}
-  - component: {fileID: 29234779839263673}
-  - component: {fileID: 29234779839263672}
-  m_Layer: 20
+  - component: {fileID: 2440496404627441187}
+  - component: {fileID: 6251933170266632366}
+  - component: {fileID: 1216272044128822793}
+  m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &29234779839263675
+--- !u!4 &2440496404627441187
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234779839263674}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_GameObject: {fileID: 2440496404627441186}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 29234781479558119}
+  m_Father: {fileID: 2762074303607899657}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
---- !u!33 &29234779839263673
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234779839263674}
-  m_Mesh: {fileID: -3886362494841718363, guid: 0be507c3fa46d6e4092c0ec17e93af52, type: 3}
---- !u!23 &29234779839263672
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
+--- !u!23 &6251933170266632366
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234779839263674}
+  m_GameObject: {fileID: 2440496404627441186}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +53,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8352620730542891521, guid: 0be507c3fa46d6e4092c0ec17e93af52, type: 3}
+  - {fileID: -3115123240102120034, guid: 312d56f916a73a64ba0fb84e21975e9e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,7 +75,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &29234781479558118
+--- !u!33 &1216272044128822793
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440496404627441186}
+  m_Mesh: {fileID: -4824924237482136423, guid: 312d56f916a73a64ba0fb84e21975e9e, type: 3}
+--- !u!1 &3251329952049061043
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,53 +91,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 29234781479558119}
-  - component: {fileID: 29234781479558112}
-  - component: {fileID: 29234781479558115}
-  - component: {fileID: 29234781479558114}
+  - component: {fileID: 2762074303607899657}
+  - component: {fileID: 5280590929216528438}
+  - component: {fileID: 5490192790649182193}
+  - component: {fileID: 3541973651443994631}
   m_Layer: 20
-  m_Name: Label Potion Of Eternal 'Youth'
+  m_Name: Sticker Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &29234781479558119
+--- !u!4 &2762074303607899657
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234781479558118}
+  m_GameObject: {fileID: 3251329952049061043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.423, y: 0.786, z: -0.782}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -0.221, y: -0.16, z: -4.381}
+  m_LocalScale: {x: 5, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 29234779839263675}
+  - {fileID: 2440496404627441187}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &29234781479558112
+--- !u!65 &5280590929216528438
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234781479558118}
+  m_GameObject: {fileID: 3251329952049061043}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.001628418, y: 0.02020173, z: 0.020038888}
-  m_Center: {x: -0.0005264814, y: -0.00010086416, z: 0.000009163266}
---- !u!54 &29234781479558115
+  m_Size: {x: 0.0006731784, y: 0.0063672843, z: 0.014040698}
+  m_Center: {x: -0.00028081733, y: -0.00000559379, z: -0.0003068208}
+--- !u!54 &5490192790649182193
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234781479558118}
+  m_GameObject: {fileID: 3251329952049061043}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -147,16 +147,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &29234781479558114
+--- !u!114 &3541973651443994631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29234781479558118}
+  m_GameObject: {fileID: 3251329952049061043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301644952358db9408e7bce7cb9abdf1, type: 3}
+  m_Script: {fileID: 11500000, guid: e0fc6c0cd71a05a4c9bf370c917f28fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _labelName: Potion Of Eternal Youth
+  _littleLabelName: Speed

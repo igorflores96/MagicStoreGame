@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7178750778160066817
+--- !u!1 &1229077793784718687
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7178750778160066816}
-  - component: {fileID: 7178750778160066823}
-  - component: {fileID: 7178750778160066820}
-  - component: {fileID: 7178750778160066821}
+  - component: {fileID: 1893023746230042597}
+  - component: {fileID: 4642750602916077258}
+  - component: {fileID: 568202149013473596}
+  - component: {fileID: 2754945660224388920}
   m_Layer: 20
-  m_Name: Label Potion Of 'Wisdom'
+  m_Name: Sticker Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7178750778160066816
+--- !u!4 &1893023746230042597
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778160066817}
+  m_GameObject: {fileID: 1229077793784718687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.757837, y: 0.786, z: -1.0078454}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -0.221, y: -0.16, z: -4.381}
+  m_LocalScale: {x: 5, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7178750778164084987}
+  - {fileID: 2148188899384601737}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7178750778160066823
+--- !u!65 &4642750602916077258
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778160066817}
+  m_GameObject: {fileID: 1229077793784718687}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.001628416, y: 0.020201728, z: 0.020038884}
-  m_Center: {x: -0.0005264814, y: -0.00010086409, z: 0.000009163283}
---- !u!54 &7178750778160066820
+  m_Size: {x: 0.0006731784, y: 0.00613421, z: 0.014528844}
+  m_Center: {x: -0.00028081733, y: 0.0000049820437, z: 0.00001109152}
+--- !u!54 &568202149013473596
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778160066817}
+  m_GameObject: {fileID: 1229077793784718687}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -64,20 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &7178750778160066821
+--- !u!114 &2754945660224388920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778160066817}
+  m_GameObject: {fileID: 1229077793784718687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301644952358db9408e7bce7cb9abdf1, type: 3}
+  m_Script: {fileID: 11500000, guid: e0fc6c0cd71a05a4c9bf370c917f28fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _labelName: Potion Of Wisdom
---- !u!1 &7178750778164084984
+  _littleLabelName: Light
+--- !u!1 &2148188899384601736
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,46 +85,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7178750778164084987}
-  - component: {fileID: 7178750778164084989}
-  - component: {fileID: 7178750778164084986}
-  m_Layer: 20
+  - component: {fileID: 2148188899384601737}
+  - component: {fileID: 6889234389578260171}
+  - component: {fileID: 5743690718489150199}
+  m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7178750778164084987
+--- !u!4 &2148188899384601737
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778164084984}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_GameObject: {fileID: 2148188899384601736}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7178750778160066816}
+  m_Father: {fileID: 1893023746230042597}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
---- !u!33 &7178750778164084989
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
+--- !u!33 &6889234389578260171
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778164084984}
-  m_Mesh: {fileID: -3886362494841718363, guid: 094ee62fa607c7949ac74a5135797aa9, type: 3}
---- !u!23 &7178750778164084986
+  m_GameObject: {fileID: 2148188899384601736}
+  m_Mesh: {fileID: -4824924237482136423, guid: ed1fd02db19e2004c894a12bbde446f3, type: 3}
+--- !u!23 &5743690718489150199
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178750778164084984}
+  m_GameObject: {fileID: 2148188899384601736}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -138,7 +138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8352620730542891521, guid: 094ee62fa607c7949ac74a5135797aa9, type: 3}
+  - {fileID: -3115123240102120034, guid: ed1fd02db19e2004c894a12bbde446f3, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
