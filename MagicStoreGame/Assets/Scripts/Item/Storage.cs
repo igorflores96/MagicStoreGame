@@ -7,14 +7,27 @@ public class Storage : MonoBehaviour
     [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private bool _storageDisappear;
     [SerializeField] private float _timeToDisappear;
+    private List<GameObject> _spawnList = new List<GameObject>();
 
 
     public Transform GetItemFromStorage()
     {
-        GameObject temp = Instantiate(_itemPrefab, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
+        GameObject temp;
+
+        if(_spawnList.Count > 2)
+        {
+            temp = _spawnList[0];
+            _spawnList.RemoveAt(0);
+            Destroy(temp);
+        }
+            
+        temp = Instantiate(_itemPrefab, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
+
+        _spawnList.Add(temp);
 
         if(_storageDisappear)
             StartCoroutine(DisappearAndReappear());
+        
 
         return temp.transform;
     }
