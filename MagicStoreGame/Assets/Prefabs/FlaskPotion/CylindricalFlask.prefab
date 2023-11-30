@@ -450,7 +450,6 @@ GameObject:
   - component: {fileID: 8633836200533023688}
   - component: {fileID: 8633836200533023691}
   - component: {fileID: 8633836200533023690}
-  - component: {fileID: 8633836200533023685}
   m_Layer: 20
   m_Name: CylindricalFlask
   m_TagString: Potion
@@ -538,21 +537,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &8633836200533023685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8633836200533023687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9323ee47776a54d8140520bc81a07e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 8633836200533023687}
-  _storageDisappear: 0
-  _timeToDisappear: 0
 --- !u!1 &8633836200804173502
 GameObject:
   m_ObjectHideFlags: 0
