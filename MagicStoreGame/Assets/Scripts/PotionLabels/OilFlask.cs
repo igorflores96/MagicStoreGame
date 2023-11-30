@@ -6,6 +6,6 @@ public class OilFlask : MonoBehaviour
 {
     public void PuringOil(Potion potion)
     {
-        
+        potion.AddOil();
     }
 }

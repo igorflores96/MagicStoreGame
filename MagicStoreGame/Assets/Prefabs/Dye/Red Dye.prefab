@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dyeColor: {r: 0.7019608, g: 0.16078432, b: 0.19215688, a: 1}
+  _colorName: Red Dye
 --- !u!65 &2128636577434814020
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,18 +13,24 @@ public class Potion : MonoBehaviour, IItem
     [SerializeField] private Transform _mindPosition;
     [SerializeField] private Transform _wisdomPosition;
     [SerializeField] private Transform _youthPosition;
-    [SerializeField] private GameObject _whater;
+    [SerializeField] private GameObject _wather;
     [SerializeField] private GameObject _dye;
+    [SerializeField] private GameObject _oil;
     [SerializeField] private GameObject _stopper;
+    [SerializeField] private Material _redOilMaterial;
+    [SerializeField] private Material _blueOilMaterial;
+    [SerializeField] private Material _yellowOilMaterial;
     private Color _potionColor;
     private int _colorQuantity;
     private int _itemValue;
     private EnchantmentType _currentElement;
     private float _currentMl;
-    private int _velocityWater;
+    private float _velocityToPouring;
     private bool _isPouringWater;
+    private bool _oilAdd;
     private bool _stickLabel;
     private bool _dyePotion;
+    private string _colorName;
     private Coroutine startFireCoroutine;
 
     void OnEnable()
@@ -32,8 +38,10 @@ public class Potion : MonoBehaviour, IItem
         _colorQuantity = 0;
         _stickLabel = false;
         _dyePotion = false;
+        _oilAdd = false;
        _currentMl = 0.0f; 
        _stopper.SetActive(false);
+       _oil.SetActive(false);
     }
 
     void Update()
@@ -42,7 +50,7 @@ public class Potion : MonoBehaviour, IItem
         {
             if(_currentMl < _potionMaxMl)
             {
-                _currentMl += 1.0f * _velocityWater * Time.deltaTime;
+                _currentMl += 1.0f * _velocityToPouring * Time.deltaTime;
                 float scale;
                 
                 if(_potionMaxMl == 15.0f)
@@ -51,10 +59,10 @@ public class Potion : MonoBehaviour, IItem
                     scale = 1.6f;
 
                 float newScaleY = Mathf.Clamp(_currentMl / _potionMaxMl, 0.0f, 1.0f) * scale;
-                
-                    
-                _whater.SetActive(true);
-                _whater.transform.localScale = new Vector3(_whater.transform.localScale.x, newScaleY, _whater.transform.localScale.z);
+                _wather.SetActive(true);
+                _wather.transform.localScale = new Vector3(_wather.transform.localScale.x, newScaleY, _wather.transform.localScale.z);
+                _oil.transform.localScale = new Vector3(_oil.transform.localScale.x, newScaleY + 0.00015f, _oil.transform.localScale.z);
+
             }
             else
             {
@@ -63,9 +71,9 @@ public class Potion : MonoBehaviour, IItem
         }
     }
 
-    public void StartingPouringWater(bool status, int velocity)
+    public void StartingPouringWater(bool status, float velocity)
     {
-        _velocityWater = velocity;
+        _velocityToPouring = velocity;
         _isPouringWater = status;
     }
 
@@ -104,13 +112,14 @@ public class Potion : MonoBehaviour, IItem
         }
     }
 
-    public void DyePotion(Color color)
+    public void DyePotion(Dye dye)
     {
-        if(!_dyePotion || _potionColor == color)
+        if(!_dyePotion || _potionColor == dye.DyeColor)
         {
             _dye.SetActive(true);
-            _dye.GetComponentInChildren<MeshRenderer>().material.color = color;
-            _potionColor = color;
+            _dye.GetComponentInChildren<MeshRenderer>().material.color = dye.DyeColor;
+            _potionColor = dye.DyeColor;
+            _colorName = dye.DyeName;
             _colorQuantity++;
             _dyePotion = true;
         }
@@ -127,7 +136,6 @@ public class Potion : MonoBehaviour, IItem
     {
         if (startFireCoroutine != null)
         {
-            Debug.Log("Parou de cozinhar");
             StopCoroutine(startFireCoroutine);
             startFireCoroutine = null; 
         }
@@ -147,14 +155,37 @@ public class Potion : MonoBehaviour, IItem
 
     }
 
+    public void AddOil()
+    {
+        _oil.SetActive(true);
+        _oilAdd = true;
+    }
+
     IEnumerator StartFire(float timeToCook)
     {
         yield return new WaitForSeconds(timeToCook);
         
+        if(_oilAdd)
+        {
+            switch(_colorName)
+            {
+                case "Blue Dye": _wather.GetComponentInChildren<MeshRenderer>().material = _blueOilMaterial;
+                break;
+                case "Red Dye": _wather.GetComponentInChildren<MeshRenderer>().material = _redOilMaterial;
+                break;
+                case "Yellow Dye": _wather.GetComponentInChildren<MeshRenderer>().material = _yellowOilMaterial;
+                break;
+            }  
+        }
+        else
+            _wather.GetComponentInChildren<MeshRenderer>().material.color = _potionColor;
+            
+
         _stopper.SetActive(true);
         _dye.SetActive(false);
-        _whater.GetComponentInChildren<MeshRenderer>().material.color = _potionColor;
+        _oil.SetActive(false);
         startFireCoroutine = null; 
+
     }
 
 
@@ -187,4 +218,5 @@ public class Potion : MonoBehaviour, IItem
     {
         get {return _colorQuantity;}
     }
+
 }
