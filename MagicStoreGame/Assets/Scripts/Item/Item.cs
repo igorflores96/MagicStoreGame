@@ -15,8 +15,6 @@ public class Item : MonoBehaviour, IItem, IScalable
     private bool _isOriginal;
     public int _itemValue = 0;
     public bool scalableFromRecipe;
-    public bool isStacking;
-    
     private void Awake() 
     {
         _isScalingUp = false;
