@@ -14,11 +14,14 @@ public class EnchantmentSpray : MonoBehaviour
 
     public void Use()
     {
+        FindObjectOfType<AudioManager>().Play("SprayCan");
+
         _machine.IsEnchantig = true;
     }
 
     public void StopUse()
     {
+        FindObjectOfType<AudioManager>().Stop("SprayCan");
         _machine.IsEnchantig = false;
     }
 }

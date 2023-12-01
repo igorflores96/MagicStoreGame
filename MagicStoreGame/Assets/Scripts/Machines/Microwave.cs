@@ -70,7 +70,9 @@ public class Microwave : MonoBehaviour
     public void FusionItens(Item RecipeItem1, Item RecipeItem2, Item RecipeItem3)
     {
         Recipe recipeLast = RecipeLists.Last();
-
+        FindObjectOfType<AudioManager>().Play("MicrowaveTurnOn");
+        FindObjectOfType<AudioManager>().Play("MicrowaveDoorClose");
+        FindObjectOfType<AudioManager>().Play("MicrowaveWavesSound");
         foreach (Recipe recipe in RecipeLists)
         {
             if (RecipeItem3 == null && recipe.RecipeItems.Count == 2)
@@ -113,6 +115,8 @@ public class Microwave : MonoBehaviour
             }
         }
         animDoor.SetTrigger("IsOpening");
+        FindObjectOfType<AudioManager>().Play("MicrowaveDoorOpen");
+        FindObjectOfType<AudioManager>().Stop("MicrowaveWavesSound");
         isFusion = false;
 
     }

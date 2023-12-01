@@ -42,7 +42,7 @@ public class ClientManager : MonoBehaviour
     private void PrepareClient()
     {
         int randIndexClient = Random.Range(0, 2);
-        
+        FindObjectOfType<AudioManager>().Play("DoorBell");
         if(randIndexClient == 0)
         {
             GameObject temp = Instantiate(_forgeClientObject, _initialPosition.position, Quaternion.identity);

@@ -25,13 +25,17 @@ public class ScaleMachine : MonoBehaviour
         if(_objectToScale != null && other.gameObject.layer == 20)
         {
             _objectToScale = null;
+            FindObjectOfType<AudioManager>().Stop("ScaleWavesDown");
+            FindObjectOfType<AudioManager>().Stop("ScaleWavesUp");
         }
     }
 
     public void ActiveScaleUp()
     {
+        
         if(_objectToScale != null)
         {
+            FindObjectOfType<AudioManager>().Play("ScaleWavesUp");
             _objectToScale.IsScalingDown = false;
             _objectToScale.IsScalingUp = true;
         }
@@ -42,6 +46,7 @@ public class ScaleMachine : MonoBehaviour
     {
         if(_objectToScale != null)
         {
+            FindObjectOfType<AudioManager>().Play("ScaleWavesDown");
             _objectToScale.IsScalingUp = false;
             _objectToScale.IsScalingDown = true;
         }

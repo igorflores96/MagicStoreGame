@@ -24,6 +24,7 @@ public class PotionMachine : MonoBehaviour
             if(_currentPotion != null)
             {
                 _currentPotion.IsPouring = false;
+                FindObjectOfType<AudioManager>().Stop("WaterFlowing");
                 _currentPotion.StopCooking();
             }
 
@@ -33,6 +34,8 @@ public class PotionMachine : MonoBehaviour
 
     public void UseWather()
     {
+        FindObjectOfType<AudioManager>().Play("WaterFlowing");
+
         if(_currentPotion != null)
             _currentPotion.StartingPouringWater(true, _multiplierVelocityWather);
     }

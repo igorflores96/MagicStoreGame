@@ -64,6 +64,7 @@ public class ScalePoundMachine : MonoBehaviour
                             }
                         
                         _pot.AdicionarEscamas(itemPrice);
+                        FindObjectOfType<AudioManager>().Play("DropScaleInPot");
                         _itensAwaitingForSell.Remove(client);
 
                         _clientManager.RemoveClient(client);
