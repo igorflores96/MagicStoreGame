@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d15beb9b497a044af768e1ce064123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoopObject: {fileID: 229970878596587024, guid: ece40ffac470cc14f865c4f301d562d6, type: 3}
+  PoopObject: {fileID: 1233594418597033442, guid: 6385df4b82dfb504290222a3fd5a08bb, type: 3}
   spawnPoint: {fileID: 992871328763422790}
   isUpgraded: 1
   timerSeconds: 5
@@ -497,6 +497,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1d96455ac8142b4e91f77ead2510c30, type: 2}
   recipeAddtional1: {fileID: 11400000, guid: 043b7a75c93d6774fb5b7e5b8a15eb49, type: 2}
   recipeAddtional2: {fileID: 11400000, guid: 1a8a87b84d48b8847bc24fe981c1e7c3, type: 2}
+  animator: {fileID: 1907643571}
+  isVerify: 0
 --- !u!1 &2400455639913570551
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +961,7 @@ GameObject:
   - component: {fileID: 3904257687572262030}
   - component: {fileID: 6079892956022908139}
   - component: {fileID: 1076810132}
+  - component: {fileID: 1907643571}
   m_Layer: 10
   m_Name: Porta Maquina
   m_TagString: Untagged
@@ -973,7 +976,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5260393565595381874}
-  m_LocalRotation: {x: -0.74442375, y: -0.0000000055879354, z: -0.00000004656613, w: 0.66770744}
+  m_LocalRotation: {x: -0.73297215, y: -0.000000039115548, z: -0.000000039115548, w: 0.68025875}
   m_LocalPosition: {x: 0, y: 0.00739, z: -0.00951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -981,7 +984,7 @@ Transform:
   - {fileID: 7358212512050519947}
   m_Father: {fileID: 1503562893836022586}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -96.219, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -94.272, y: 0, z: 0}
 --- !u!33 &5220774324648939125
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1062,6 +1065,27 @@ MonoBehaviour:
   _microwave: {fileID: 0}
   _subWitch: {fileID: 3469287837573025567}
   _buttonName: DoorSub
+--- !u!95 &1907643571
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260393565595381874}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68f1d203fc3ad4a4f9fa754b08782fbb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6691654479631232280
 GameObject:
   m_ObjectHideFlags: 0

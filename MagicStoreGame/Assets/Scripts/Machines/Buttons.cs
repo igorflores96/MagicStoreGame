@@ -29,13 +29,13 @@ public class Buttons : MonoBehaviour
     {
         _potionMachine.UseFire();
     }
-    public void FusionItem()
+    public void IsFusion()
     {
-       StartCoroutine(_microwave.Timer());
+        _microwave.IsFusion();
     }
-    public void VerificarItem()
+    public void IsVerifying()
     {
-        StartCoroutine(_subWitch.Timer());
+        _subWitch.IsVerifying();
     }
     public string ButtonName
     {

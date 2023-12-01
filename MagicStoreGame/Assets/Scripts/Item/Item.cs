@@ -13,7 +13,7 @@ public class Item : MonoBehaviour, IItem, IScalable
     private bool _isScalingUp;
     private bool _isScalingDown;
     private bool _isOriginal;
-    private int _itemValue;
+    public int _itemValue = 0;
     public bool scalableFromRecipe;
     public bool isStacking;
     
@@ -47,11 +47,11 @@ public class Item : MonoBehaviour, IItem, IScalable
         transform.localScale = novaEscala2;
     }
 
-    public int ChangeValueItem(int multiplier)
+    public int ChangeValueItem(int value)
     {
-        _itemValue *= multiplier;
+        ValueItem = value;
 
-        return _itemValue;
+        return ValueItem;
     }
 
     public int ValueItem

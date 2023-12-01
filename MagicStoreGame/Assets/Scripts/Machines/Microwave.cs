@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.ProBuilder;
@@ -18,7 +19,10 @@ public class Microwave : MonoBehaviour
     private bool poopSet = true;
     public float timerSeconds;
     private List<GameObject> collidedObjects = new List<GameObject>();
-
+    public Animator animDoor;
+    public Animator animTrigger;
+    public Item itemValue;
+    public bool isFusion;
     public void AddItem(Item RecipeItem,bool isUpgraded, List<GameObject> collidedObjects)
     {
         this.collidedObjects = collidedObjects;
@@ -55,9 +59,16 @@ public class Microwave : MonoBehaviour
             }
         }
     }
+    public void IsFusion()
+    {
+        if (!isFusion)
+        {
+            StartCoroutine(Timer());
+            isFusion = true;
+        }
+    }
     public void FusionItens(Item RecipeItem1, Item RecipeItem2, Item RecipeItem3)
     {
-        
         Recipe recipeLast = RecipeLists.Last();
 
         foreach (Recipe recipe in RecipeLists)
@@ -70,7 +81,9 @@ public class Microwave : MonoBehaviour
                     poopSet = false;
                     Instantiate(recipe.RecipeItemPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
                     DeleteCollidedObjects();
-                    
+                    itemValue = recipe.RecipeItemPrefab.GetComponent<Item>();
+                    itemValue.ChangeValueItem(2);
+
                 }
                 else if(poopSet && recipe.Equals(recipeLast))
                 {
@@ -86,15 +99,22 @@ public class Microwave : MonoBehaviour
                     poopSet = false;
                     Instantiate(recipe.RecipeItemPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
                     DeleteCollidedObjects();
+                    itemValue = recipe.RecipeItemPrefab.GetComponent<Item>();
+                    itemValue.ChangeValueItem(2);
+
                 }
                 else if (poopSet && recipe.Equals(recipeLast))
                 {
                     Instantiate(PoopObject.gameObject, spawnPoint.transform.position, spawnPoint.transform.rotation);
                     DeleteCollidedObjects();
+                    
                 }
 
             }
         }
+        animDoor.SetTrigger("IsOpening");
+        isFusion = false;
+
     }
     public bool ContainsItem(Recipe recipe, Item RecipeItem)
     {
@@ -118,6 +138,8 @@ public class Microwave : MonoBehaviour
     }
     public IEnumerator Timer()
     {
+        animDoor.SetTrigger("IsClosing");
+        animTrigger.SetTrigger("IsPull");
         yield return new WaitForSeconds(timerSeconds);
 
         FusionItens(this.RecipeItem1, this.RecipeItem2, this.RecipeItem3);
