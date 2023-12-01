@@ -68,8 +68,8 @@ MonoBehaviour:
   _scalePerFrame: 0.1
   _itemName: Sandwich
   _currentElement: 5
+  _itemValue: 0
   scalableFromRecipe: 0
-  isStacking: 0
 --- !u!54 &934360554269110680
 Rigidbody:
   m_ObjectHideFlags: 0
