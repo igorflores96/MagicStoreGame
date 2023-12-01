@@ -29,6 +29,8 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private LayerMask _layerButton;
     [SerializeField] private LayerMask _layerMachineEnchant;
     [SerializeField] private LayerMask _layerStorage;
+    [SerializeField] private LayerMask _layerClient;
+
 
 
     private PlayerMovement _playerMovement;
@@ -55,6 +57,7 @@ public class MovementPlayer : MonoBehaviour
         _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
         _playerMovement.MovementPlayer.UseMachine.performed += UseButton;  //microondas, box collider = adicionar layer 10 de botao na alavanca
         _playerMovement.MovementPlayer.UseLabel.performed += UseLabel;
+        _playerMovement.MovementPlayer.GrabItem.performed += TalkToClient;
         _playerMovement.MovementPlayer.Enable();      
     }
 
@@ -214,6 +217,27 @@ public class MovementPlayer : MonoBehaviour
                 }
 
             } 
+        }
+    }
+
+    private void TalkToClient(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, _grabRayCastDistance, _layerClient))
+            {
+                if(hit.transform.TryGetComponent(out ForgeClient forgeClient))
+                {
+                    forgeClient.SetDialogToSay();
+                }
+                
+                if(hit.transform.TryGetComponent(out SellClient sellClient))
+                {
+                    sellClient.SetDialogToSay();
+                }
+            }
         }
     }
 

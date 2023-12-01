@@ -131,5 +131,7 @@ MonoBehaviour:
   _maxSizeUp: 0
   _maxSizeDown: 0
   _scalePerFrame: 0
-  _itemName: MagicWand
+  _itemName: Magic Wand
   _currentElement: 4
+  scalableFromRecipe: 0
+  isStacking: 0
