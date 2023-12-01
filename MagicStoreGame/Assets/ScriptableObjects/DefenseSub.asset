@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefenseSub
   m_EditorClassIdentifier: 
   RecipeName: DefenseSub
-  RecipeItemPrefab: {fileID: 4262167345876272165, guid: 88f982bd553ca464f898d0b445297320, type: 3}
+  RecipeItemPrefab: {fileID: 7184057075684004110, guid: e33e691b89a4ea6438be2e150dbb87ae, type: 3}
   RecipeItems:
   - {fileID: 1091877851772014483, guid: 22449478e8045d34f999b8314a01e81b, type: 3}
   - {fileID: 4108697958570815237, guid: 39a0e1444fc6ee34ca612775d8186ff3, type: 3}

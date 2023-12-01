@@ -34374,7 +34374,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25920
+  m_Name: pb_Mesh25026
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35456,7 +35456,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25902
+  m_Name: pb_Mesh25012
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -40190,7 +40190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24232
+  m_Name: pb_Mesh24072
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -41113,7 +41113,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1365857252}
   - component: {fileID: 1365857253}
-  - component: {fileID: 1365857254}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -41149,27 +41148,155 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: TesteMusic1
-    clip: {fileID: 8300000, guid: 6615856b3cb1ee341bb2f104c2dc106e, type: 3}
+  - name: Gramophone
+    clip: {fileID: 8300000, guid: 0fc4acad08ca0f040b00df15a88a919e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     isMusic: 1
     source: {fileID: 0}
+  - name: Music1
+    clip: {fileID: 8300000, guid: 1b1995b12c638a542ac0ca08651cd9d6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    isMusic: 1
+    source: {fileID: 0}
+  - name: Music2
+    clip: {fileID: 8300000, guid: f1718b9596dcbb64cba2ab5367648372, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    isMusic: 1
+    source: {fileID: 0}
+  - name: Music3
+    clip: {fileID: 8300000, guid: 8c8d7af04e0b2fd42893326ff886abf6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    isMusic: 1
+    source: {fileID: 0}
+  - name: Music4
+    clip: {fileID: 8300000, guid: 6615856b3cb1ee341bb2f104c2dc106e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    isMusic: 1
+    source: {fileID: 0}
+  - name: Music5
+    clip: {fileID: 8300000, guid: d24c92e3feb713149afbbf8e4fb2fe80, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    isMusic: 1
+    source: {fileID: 0}
+  - name: Music6
+    clip: {fileID: 8300000, guid: 36f92ad1f76a1374c9edd41485da456f, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    isMusic: 1
+    source: {fileID: 0}
+  - name: '| | | WORLD  | | |'
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: SeaWaves
+    clip: {fileID: 8300000, guid: 9c29985b74cb5b14283490b3031137fc, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: '| | | COUNTER  | | |'
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: DoorBell
+    clip: {fileID: 8300000, guid: defd66313d6fdd94c9105631c51ed4d1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: DropScaleInPot
+    clip: {fileID: 8300000, guid: b52e30a1eceac5e41a1cc997064a46d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: CandleFireOff
+    clip: {fileID: 8300000, guid: 1ab9ba287d390d74984d7b9022da3dc0, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: '| | | MICROWAVE | | |'
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: MicrowaveTurnOn
+    clip: {fileID: 8300000, guid: be09143f0f2b4bc428ff779449485eb6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: MicrowaveWavesSound
+    clip: {fileID: 8300000, guid: db4afd2406c8ed74eaf991ba70287ec8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: MicrowaveDoorClose
+    clip: {fileID: 8300000, guid: f65cd680fe45a904f9de6151fc965beb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: MicrowaveDoorOpen
+    clip: {fileID: 8300000, guid: 16769379c86285546b299fff702543f8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: '| | | SCALES | | |'
+    clip: {fileID: 0}
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: ScaleWavesUp
+    clip: {fileID: 8300000, guid: 7acee72186810184ebb7d5d9eaf714a5, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: ScaleWavesDown
+    clip: {fileID: 8300000, guid: 7acee72186810184ebb7d5d9eaf714a5, type: 3}
+    volume: 1
+    pitch: 0.9
+    loop: 1
+    isMusic: 0
+    source: {fileID: 0}
   volumeSlider: {fileID: 1992569573}
   sfxSlider: {fileID: 1312348649}
---- !u!114 &1365857254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365857251}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad044239f66d434469a8a3718b2bba5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1372100383
 GameObject:
   m_ObjectHideFlags: 0
@@ -45266,7 +45393,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24126
+  m_Name: pb_Mesh24022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -77,6 +77,7 @@ public class FlamesManager : MonoBehaviour
         if (currentScaleFactor <= targetScaleFactor)
         {
             // Deactivate the candle and move to the next one
+            FindObjectOfType<AudioManager>().Play("CandleFireOff");
             candleObject.SetActive(false);
             currentCandleIndex++;
 
