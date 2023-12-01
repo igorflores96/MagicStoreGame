@@ -41281,10 +41281,17 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     source: {fileID: 0}
-  - name: ScaleWaves
+  - name: ScaleWavesUp
     clip: {fileID: 8300000, guid: 7acee72186810184ebb7d5d9eaf714a5, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 1.1
+    loop: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: ScaleWavesDown
+    clip: {fileID: 8300000, guid: 7acee72186810184ebb7d5d9eaf714a5, type: 3}
+    volume: 1
+    pitch: 0.9
     loop: 1
     isMusic: 0
     source: {fileID: 0}
