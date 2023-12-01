@@ -67,7 +67,7 @@ public class SubWitch : MonoBehaviour
             {
                 
                 var currentcount = recipe.RecipeItems.Count - 1;
-                if (rec.RecipeItems.Count != currentcount)
+                if (rec.RecipeItems.Count != currentcount && rec.Equals(recipeLast))
                 {
                     Instantiate(PoopObject.gameObject, spawnPoint.transform.position, spawnPoint.transform.rotation);
                     DeleteCollidedObjects();

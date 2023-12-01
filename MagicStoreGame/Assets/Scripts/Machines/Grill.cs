@@ -28,7 +28,6 @@ public class Grill : MonoBehaviour
                 baseObj = collidedObject;
                 collidedObject.gameObject.GetComponent<Collider>().enabled = false;
                 collidedObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                item.isStacking = true;
             }
             else if (collidedObjects.Count > 1 && movementPlayer.isGrabbed == false)
             {
@@ -40,9 +39,8 @@ public class Grill : MonoBehaviour
                positionNow.y = positionNow.y + baseHeight;
                 collidedObject.gameObject.GetComponent<Collider>().enabled = false;
                 collidedObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-               collidedObject.transform.position = positionNow;
-               item.isStacking = true;
-               baseObj = collidedObject;
+                collidedObject.transform.position = positionNow;
+                baseObj = collidedObject;
             }
             
         }
