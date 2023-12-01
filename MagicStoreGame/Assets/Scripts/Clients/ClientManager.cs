@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class ClientManager : MonoBehaviour
 {
-    public List<Item> MicroWaveItems;
-    public List<Item> PotionItems;
-    public List<Item> SubwitchItems;
+    public List<GameObject> MicroWaveItems;
+    public List<GameObject> PotionItems;
+    public List<GameObject> SubwitchItems;
     
+    [SerializeField] private ScalePoundMachine _PoundMachine;
     [SerializeField] private float _timeToNextClient;
     [SerializeField] private int _maxClientQuantity;
     [SerializeField] private GameObject _forgeClientObject;
@@ -16,10 +17,11 @@ public class ClientManager : MonoBehaviour
     [SerializeField] private Transform _receptionPosition;
     [SerializeField] private Transform[] _storePositions;
     [SerializeField] private Transform _initialPosition;
+    [SerializeField] private Transform _positionToPlaceItem;
 
     private float _clientTimeCount;
-    private List<ClientBase> _activeClientes = new List<ClientBase>();
-
+    private List<GameObject> _activeClientes = new List<GameObject>();
+    public Vector3 _newPositionToGo;
     private void OnEnable() 
     {
         _clientTimeCount = _timeToNextClient;
@@ -47,12 +49,13 @@ public class ClientManager : MonoBehaviour
 
             if(temp.TryGetComponent(out ForgeClient tempForge))
             {
+                _activeClientes.Add(temp);
                 tempForge.GenerateDictionary();
-                _activeClientes.Add(tempForge);
-                tempForge.LocalToWalk(_storePositions[_activeClientes.Count - 1]);
-
+                Debug.Log(_newPositionToGo);
+                tempForge.LocalToWalk(_storePositions[_activeClientes.Count - 1].position);
                 randIndexClient = Random.Range(0, MicroWaveItems.Count);
                 tempForge.SetItemOrder(MicroWaveItems[randIndexClient]);
+                _PoundMachine._itensAwaitingForSell.Add(temp);
             }
         }
         else
@@ -61,16 +64,20 @@ public class ClientManager : MonoBehaviour
 
             if(temp.TryGetComponent(out SellClient tempSell))
             {
-                _activeClientes.Add(tempSell);
-                tempSell.LocalToWalk(_storePositions[_activeClientes.Count - 1]);
+                _activeClientes.Add(temp);
+                Debug.Log(_newPositionToGo);
+                tempSell.LocalToWalk(_storePositions[_activeClientes.Count - 1].position);
+                tempSell.PositionToPlaceItem = _positionToPlaceItem;
                 randIndexClient = Random.Range(0, MicroWaveItems.Count);
                 tempSell.SetItemOrder(MicroWaveItems[randIndexClient]);
+                _PoundMachine._itensAwaitingForSell.Add(temp);
             }
         }
-       
 
+    }
 
-
-
+    public void RemoveClient(GameObject client)
+    {
+        _activeClientes.Remove(client);
     }
 }

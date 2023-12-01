@@ -5,14 +5,17 @@ using UnityEngine;
 public class Item : MonoBehaviour, IItem, IScalable
 {
     
+    [SerializeField ] private bool _isOriginal;
+    [SerializeField] private bool _itemScalable;
     [SerializeField] private float _maxSizeUp;
     [SerializeField] private float _maxSizeDown;
     [SerializeField] private float _scalePerFrame;
     [SerializeField] public string _itemName;
     [SerializeField] private EnchantmentType _currentElement;
+    private int _priceItem;
     private bool _isScalingUp;
     private bool _isScalingDown;
-    private bool _isOriginal;
+    
     public int _itemValue = 0;
     public bool scalableFromRecipe;
     private void Awake() 
@@ -23,7 +26,6 @@ public class Item : MonoBehaviour, IItem, IScalable
 
     void Update()
     {
-
         if (_isScalingUp && transform.localScale.x < _maxSizeUp)
         {
             Scale(_scalePerFrame);
@@ -48,8 +50,22 @@ public class Item : MonoBehaviour, IItem, IScalable
     public int ChangeValueItem(int value)
     {
         ValueItem = value;
-
         return ValueItem;
+    }
+
+    public int SetItemPrice(int indexMultiplier)
+    {
+        switch(indexMultiplier)
+        {
+            case 0: _priceItem = 1;
+            break; 
+            case 1: _priceItem = 3;
+            break;
+            case 2: _priceItem = 5;
+            break;
+        }
+
+        return _priceItem;
     }
 
     public int ValueItem
@@ -82,9 +98,15 @@ public class Item : MonoBehaviour, IItem, IScalable
         set {_currentElement = value;}
     }
 
-    public bool OriginalItem
+    public bool IsOriginal
     {
         get {return _isOriginal;}
         set {_isOriginal = value;}
+    }
+
+
+    public int PriceItem
+    {
+        get {return _priceItem;}
     }
 }

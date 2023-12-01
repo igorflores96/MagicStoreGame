@@ -127,9 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cd34abf988a8b4f80ee6186cd81c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isOriginal: 1
+  _itemScalable: 0
   _maxSizeUp: 1
   _maxSizeDown: 0.2
   _scalePerFrame: 0.1
-  _itemName: 
+  _itemName: Iron Sword
   _currentElement: 0
+  _itemValue: 2
   scalableFromRecipe: 1

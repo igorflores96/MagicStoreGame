@@ -63,13 +63,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cd34abf988a8b4f80ee6186cd81c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isOriginal: 0
+  _itemScalable: 0
   _maxSizeUp: 1.3
   _maxSizeDown: 0.5
   _scalePerFrame: 0.1
   _itemName: Sandwich
   _currentElement: 5
+  _itemValue: 0
   scalableFromRecipe: 0
-  isStacking: 0
 --- !u!54 &934360554269110680
 Rigidbody:
   m_ObjectHideFlags: 0

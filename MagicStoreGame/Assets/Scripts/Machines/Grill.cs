@@ -14,7 +14,7 @@ public class Grill : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameObject collidedObject = collision.gameObject;
-        // Adiciona o objeto à lista se ainda não estiver presente
+        // Adiciona o objeto ï¿½ lista se ainda nï¿½o estiver presente
         if (!collidedObjects.Contains(collidedObject) && collidedObject.tag != "ResultSub")
         {
            

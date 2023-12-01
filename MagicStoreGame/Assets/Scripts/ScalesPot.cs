@@ -1,7 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class ScalesPot : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _valueText;
     private GameObject[] escamas; // Array para armazenar as escamas childrens dentro do pote
     public int currentScales = 0; // Número atual de escamas no pote
 
@@ -15,7 +17,7 @@ public class ScalesPot : MonoBehaviour
         {
             escamas[i] = transform.GetChild(i).gameObject;
         }
-
+        _valueText.text = currentScales.ToString("000");
         UpdateEscamasNoPote();
     }
 
@@ -37,6 +39,7 @@ public class ScalesPot : MonoBehaviour
     public void AdicionarEscamas(int quantidade)
     {
         currentScales += quantidade;
+        _valueText.text = currentScales.ToString("000");
     }
 
     // Método para diminuir o número de escamas (Utilizar quando comprar upgrades para a loja)

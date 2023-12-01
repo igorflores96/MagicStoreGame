@@ -20,15 +20,15 @@ public class ScaleObject : MonoBehaviour
     void Update()
     {
 
-            if (isScalingUp && transform.localScale.x < maxSizeUp)
-            {
-                Scale(scalePerFrame);
-            }
+        if (isScalingUp && transform.localScale.x < maxSizeUp)
+        {
+            Scale(scalePerFrame);
+        }
 
-            if (isScalingDown && transform.localScale.x > maxSizeDown)
-            {
-                Scale(-scalePerFrame);
-            }
+        if (isScalingDown && transform.localScale.x > maxSizeDown)
+        {
+            Scale(-scalePerFrame);
+        }
 
     }
     private void Scale(float scalingVal)

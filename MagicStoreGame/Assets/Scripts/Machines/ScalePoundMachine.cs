@@ -2,10 +2,17 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ScalePoundMachine : MonoBehaviour
 {   
-    private int totalResult { get; set; }
+    public List<GameObject> _itensAwaitingForSell = new List<GameObject>();
+    public List<GameObject> _originalItens = new List<GameObject>();
+
+    [SerializeField] private ClientManager _clientManager;
+    [SerializeField] private ScalesPot _pot;
+    [SerializeField] private Transform _chestPosition;
+    private int itemPrice { get; set; }
     private int colliderCount;
     public Animator anim;
     public MovementPlayer player;
@@ -13,28 +20,61 @@ public class ScalePoundMachine : MonoBehaviour
     {
         if(this.colliderCount == 0 && player.isGrabbed == false)
         {
-            Item item = collision.gameObject.GetComponent<Item>();
-            GetPrice(item, collision.gameObject);
-            colliderCount++;
+            IItem tempItem;
+            if(collision.gameObject.TryGetComponent(out tempItem))
+            {
+                if(!tempItem.IsOriginal)
+                {
+                    colliderCount++;
+                    GetPrice(collision.gameObject, tempItem);
+                }
+                else
+                {
+                    if(!_originalItens.Contains(collision.gameObject))
+                        _originalItens.Add(collision.gameObject);
+                    
+                    collision.transform.position = _chestPosition.position;
+                }
+            }
         }
     }
-    public void GetPrice(Item item, GameObject gameObj)
+    public void GetPrice(GameObject gameObj, IItem item)
     {
-       int value = item.ValueItem;
-       this.totalResult = value;
-       switch(value)
+        foreach (GameObject client in _itensAwaitingForSell)
         {
-            case 0:
-                anim.SetTrigger("Bad");
-                break;
-            case 1:
-                anim.SetTrigger("Default");
-                break; 
-            case 2:
-                anim.SetTrigger("Good");
-                break;
+            if(client.TryGetComponent(out ClientBase clientScript))
+            {
+                if(clientScript.CurrentItemOrder.TryGetComponent(out Item itemTemp))
+                {
+                    if(item.NameItem == itemTemp.NameItem)
+                    {
+                        itemPrice = item.SetItemPrice(item.ValueItem);
+
+                        switch(itemPrice)
+                            {
+                                case 0:
+                                    anim.SetTrigger("Bad");
+                                    break;
+                                case 1:
+                                    anim.SetTrigger("Default");
+                                    break; 
+                                case 2:
+                                    anim.SetTrigger("Good");
+                                    break;
+                            }
+                        
+                        _pot.AdicionarEscamas(itemPrice);
+                        _itensAwaitingForSell.Remove(client);
+
+                        _clientManager.RemoveClient(client);
+                        Destroy(client);
+                        Destroy(gameObj);
+                        colliderCount = 0;
+                        break;
+                    }
+                }
+            }
         }
-        Destroy(gameObj);
-        colliderCount = 0;
+
     }
 }

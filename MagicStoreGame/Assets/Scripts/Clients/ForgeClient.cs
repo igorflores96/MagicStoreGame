@@ -7,7 +7,9 @@ public class ForgeClient : ClientBase
 {   
     
     [SerializeField] private TextDialog _textDialog;
-    private Item _currentItem;
+    private Item _itemToOrder;
+    private Potion _potionToOrder;
+    private GameObject _currentItemOrder;
     private string _sentenceToOrder;
     private Transform _recepetionPosition;
     private bool isWalking = false;
@@ -30,21 +32,25 @@ public class ForgeClient : ClientBase
         }
             
     }
-    public override void SetItemOrder(Item item)
+    public override void SetItemOrder(GameObject item)
     {
-        _currentItem = item;
+        _currentItemOrder = item;
+        CurrentItemOrder = _currentItemOrder;
     }
 
-    public override void LocalToWalk(Transform position)
+    public override void LocalToWalk(Vector3 position)
     {
-        _recepetionPosition = position;
+        _recepetionPosition.position = position;
         isWalking = true;
     }
 
     public override void SetDialogToSay()
     {
-        Debug.Log(_currentItem.NameItem);
-        _sentenceToOrder = DialogStorage.GetForgeInitialSentence(_currentItem.NameItem);
+        if(_currentItemOrder.TryGetComponent(out IItem item))
+        {
+            _sentenceToOrder = DialogStorage.GetForgeInitialSentence(item.NameItem);
+        }
+        
         CurrentSentence = _sentenceToOrder;
 
         _textDialog.Sentence = CurrentSentence;

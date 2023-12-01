@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class Potion : MonoBehaviour, IItem
 {
+    [SerializeField ] private bool _isOriginal;
     [SerializeField] private float _potionMaxMl;
     [SerializeField] private string _itemName;
     [SerializeField] private Transform _labelPosition;
@@ -22,7 +23,8 @@ public class Potion : MonoBehaviour, IItem
     [SerializeField] private Material _yellowOilMaterial;
     private Color _potionColor;
     private int _colorQuantity;
-    private int _itemValue;
+    private int _itemPrice;
+    public int _itemValue = 0;
     private EnchantmentType _currentElement;
     private float _currentMl;
     private float _velocityToPouring;
@@ -180,12 +182,26 @@ public class Potion : MonoBehaviour, IItem
         else
             _wather.GetComponentInChildren<MeshRenderer>().material.color = _potionColor;
             
-
+        _itemValue = 2;
         _stopper.SetActive(true);
         _dye.SetActive(false);
         _oil.SetActive(false);
         startFireCoroutine = null; 
+    }
 
+    public int SetItemPrice(int indexMultiplier)
+    {
+        switch(indexMultiplier)
+        {
+            case 0: _itemPrice = 1;
+            break; 
+            case 1: _itemPrice = 3;
+            break;
+            case 2: _itemPrice = 5;
+            break;
+        }
+
+        return _itemPrice;
     }
 
 
@@ -217,6 +233,17 @@ public class Potion : MonoBehaviour, IItem
     public int PotionColorQuantity
     {
         get {return _colorQuantity;}
+    }
+
+    public bool IsOriginal
+    {
+        get {return _isOriginal;}
+        set {_isOriginal = value;}
+    }
+
+    public int PriceItem
+    {
+        get {return _itemPrice;}
     }
 
 }

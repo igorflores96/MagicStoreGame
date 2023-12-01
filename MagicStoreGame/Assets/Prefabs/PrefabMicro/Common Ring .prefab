@@ -130,6 +130,7 @@ MonoBehaviour:
   _maxSizeUp: 10
   _maxSizeDown: 5
   _scalePerFrame: 0.1
-  _itemName: Ring
+  _itemName: Common Ring
   _currentElement: 5
+  _itemValue: 0
   scalableFromRecipe: 0
