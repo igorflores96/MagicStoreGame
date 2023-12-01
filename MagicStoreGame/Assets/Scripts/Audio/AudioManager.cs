@@ -7,12 +7,12 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     private float volumeChangePercentage = 0.05f; // Porcentagem para aumentar/diminuir o volume
+    private int currentMusicIndex = 0; // Índice da música atual
 
     public static AudioManager instance;
 
-    public Slider volumeSlider; 
-    public Slider sfxSlider; 
-
+    public Slider volumeSlider;
+    public Slider sfxSlider;
 
     void Awake()
     {
@@ -39,71 +39,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("TesteMusic1"); // Toca a música no início do jogo
-    }
-
-    void AdjustMusicVolume(bool increase)
-    {
-        foreach (Sound s in sounds)
-        {
-            if (s.isMusic)
-            {
-                if (increase)
-                {
-                    s.volume = Mathf.Clamp01(s.volume + (s.volume * volumeChangePercentage)); // Aumenta o volume
-                }
-                else
-                {
-                    s.volume = Mathf.Clamp01(s.volume - (s.volume * volumeChangePercentage)); // Diminui o volume
-                }
-
-                s.source.volume = s.volume; // Atualiza o volume do AudioSource
-            }
-        }
-    }
-
-    public void OnMusicSliderChanged()
-    {
-        foreach (Sound s in sounds)
-        {
-            if (s.isMusic)
-            {
-                s.volume = Mathf.Clamp01(volumeSlider.value); // Atualiza o volume baseado no valor do slider
-                s.source.volume = s.volume; // Atualiza o volume do AudioSource
-            }
-        }
-    }
-
-    void AdjustSFXVolume(bool increase)
-    {
-        foreach (Sound s in sounds)
-        {
-            if (s.isMusic == false)
-            {
-                if (increase)
-                {
-                    s.volume = Mathf.Clamp01(s.volume + (s.volume * volumeChangePercentage)); // Aumenta o volume
-                }
-                else
-                {
-                    s.volume = Mathf.Clamp01(s.volume - (s.volume * volumeChangePercentage)); // Diminui o volume
-                }
-
-                s.source.volume = s.volume; // Atualiza o volume do AudioSource
-            }
-        }
-    }
-
-    public void OnSFXSliderChanged()
-    {
-        foreach (Sound s in sounds)
-        {
-            if (s.isMusic == false)
-            {
-                s.volume = Mathf.Clamp01(volumeSlider.value); // Atualiza o volume baseado no valor do slider
-                s.source.volume = s.volume; // Atualiza o volume do AudioSource
-            }
-        }
+        PlayMusic(0); // Toca a primeira música no início do jogo
     }
 
     public void Play(string name)
@@ -115,9 +51,29 @@ public class AudioManager : MonoBehaviour
             if (s.isMusic)
             {
                 StopAllMusic();
+                PlayMusic(Array.IndexOf(sounds, s)); // Toca a música específica
             }
+            else
+            {
+                s.source.Play();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+        }
+    }
 
-            s.source.Play();
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s != null)
+        {
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
         }
         else
         {
@@ -135,7 +91,24 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+
+    void PlayMusic(int index)
+    {
+        currentMusicIndex = index;
+        sounds[currentMusicIndex].source.Play();
+        sounds[currentMusicIndex].source.loop = false;
+        sounds[currentMusicIndex].source.SetScheduledEndTime(AudioSettings.dspTime + sounds[currentMusicIndex].clip.length);
+        Invoke("PlayNextMusic", sounds[currentMusicIndex].clip.length);
+    }
+
+    void PlayNextMusic()
+    {
+        currentMusicIndex = (currentMusicIndex + 1) % sounds.Length;
+        PlayMusic(currentMusicIndex);
+    }
 }
+
+
 
 
 //FindObjectOfType<AudioManager>().Play("AudioName");
