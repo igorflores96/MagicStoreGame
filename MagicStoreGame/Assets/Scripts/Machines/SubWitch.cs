@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SubWitch : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class SubWitch : MonoBehaviour
     private Recipe recipe;
     public Recipe recipeAddtional1;
     public Recipe recipeAddtional2;
+    public Animator animator;
+    private Item itemValue;
+    public bool isVerify;
     private void Awake()
     {
         recipe = new Recipe();
@@ -45,6 +50,7 @@ public class SubWitch : MonoBehaviour
     }
     public IEnumerator Timer()
     {
+        animator.SetTrigger("DoorUp");
         yield return new WaitForSeconds(timerSeconds);
         VerificarReceita();
     }
@@ -65,6 +71,7 @@ public class SubWitch : MonoBehaviour
                 {
                     Instantiate(PoopObject.gameObject, spawnPoint.transform.position, spawnPoint.transform.rotation);
                     DeleteCollidedObjects();
+                    
                     result = false;
                 }
                 else
@@ -74,18 +81,24 @@ public class SubWitch : MonoBehaviour
                     {
                         this.notTottaly = false;
                         Instantiate(rec.RecipeItemPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+                        this.itemValue = rec.RecipeItemPrefab.GetComponent<Item>();
+                        itemValue.ChangeValueItem(2);
                         DeleteCollidedObjects();
                     }
                     else if (this.notTottaly && rec.Equals(recipeLast))
                     {
                         Instantiate(rec.RecipeItemPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
                         DeleteCollidedObjects();
-                        //rec.RecipeItemPrefab.GetComponent<Item>().ChangeValueItem(-1);
+                        this.itemValue = rec.RecipeItemPrefab.GetComponent<Item>();
+                        itemValue.ChangeValueItem(1);
                         Debug.Log("item nao totalmente correto");
                     }
                 }
             }
+        isVerify = false;
+        animator.SetTrigger("DoorDown");
         return result;
+        
     }
     private bool VerificarItems(Recipe rec)
     {
@@ -119,6 +132,14 @@ public class SubWitch : MonoBehaviour
                 collidedObjects.RemoveAt(i);
                 recipe.RecipeItems.RemoveAt(i);
             }
+        }
+    }
+    public void IsVerifying()
+    {
+        if (!isVerify)
+        {
+            StartCoroutine(Timer());
+            isVerify = true;
         }
     }
 }

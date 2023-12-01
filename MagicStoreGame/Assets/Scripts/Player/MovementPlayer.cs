@@ -51,8 +51,8 @@ public class MovementPlayer : MonoBehaviour
         _buttonActions["ButtonUp"] = SetMachineUp;
         _buttonActions["ButtonWater"] = TurnOnWater;
         _buttonActions["ButtonFire"] = TurnOnFire;
-        _buttonActions["LeverMicro"] = FusionItem;
-        _buttonActions["DoorSub"] = VerificarItem;
+        _buttonActions["LeverMicro"] = IsFusion;
+        _buttonActions["DoorSub"] = IsVerifying;
 
 
         _playerMovement = new PlayerMovement();
@@ -96,19 +96,19 @@ public class MovementPlayer : MonoBehaviour
                 RaycastHit hit;
                 Item tempItem;
                 EnchantmentSpray spray;
-                
 
+                
                 if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _grabRayCastDistance, _layerGrabItem))
                 {
                     _currentItemGrabed = hit.transform;
                     _currentItemGrabed.rotation = Quaternion.identity;
-                        
+                    isGrabbed = true;
                     if (_currentItemGrabed.TryGetComponent(out tempItem))
                     {
                         tempItem.IsScalingUp = false;
                         tempItem.IsScalingDown = false;
                     }
-                    isGrabbed = true;
+                    
                     if (_currentItemGrabed.TryGetComponent(out spray))
                     {
                         OnSprayPickedUp.Invoke(spray.EnchantmentTypeSpray);
@@ -326,13 +326,13 @@ public class MovementPlayer : MonoBehaviour
     {
        button.SetFireOn(); 
     }
-    private void FusionItem(Buttons button)
+    private void IsFusion(Buttons button)
     {
-        button.FusionItem();
+        button.IsFusion();
     }
-    private void VerificarItem(Buttons button)
+    private void IsVerifying(Buttons button)
     {
-        button.VerificarItem();
+        button.IsVerifying();
     }
     private void LateUpdate() 
     {

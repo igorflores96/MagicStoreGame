@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 2945096982470804477}
   - component: {fileID: 3924579825828568485}
   - component: {fileID: 3924579825828568487}
+  - component: {fileID: 1223837078}
   m_Layer: 10
   m_Name: Alavanca
   m_TagString: Untagged
@@ -312,6 +313,27 @@ MonoBehaviour:
   _microwave: {fileID: 3924579825828568484}
   _subWitch: {fileID: 0}
   _buttonName: LeverMicro
+--- !u!95 &1223837078
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838258186281557529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef8619de5e09ac3468eb5f3d911343de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3924579824231256158
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,10 +501,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ede1e2d9ef4758d47a2478ffb0845727, type: 2}
   - {fileID: 11400000, guid: cdd048d5923ad2f45a3870b97ff2ff8c, type: 2}
   - {fileID: 11400000, guid: 6c59b8d7755a5d642b217e8c48f9ae30, type: 2}
-  - {fileID: 11400000, guid: e1d96455ac8142b4e91f77ead2510c30, type: 2}
-  PoopObject: {fileID: 229970878596587024, guid: ece40ffac470cc14f865c4f301d562d6, type: 3}
+  - {fileID: 11400000, guid: 5387bbdbe3e5f3a4daa3e8ef086e52bb, type: 2}
+  PoopObject: {fileID: 1233594418597033442, guid: 6385df4b82dfb504290222a3fd5a08bb, type: 3}
   spawnPoint: {fileID: 3924579824231256158}
   timerSeconds: 5
+  animDoor: {fileID: 1223837079}
+  animTrigger: {fileID: 1223837078}
+  itemValue: {fileID: 0}
+  isFusion: 0
 --- !u!1 &4929454504163112127
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +621,7 @@ GameObject:
   - component: {fileID: 3224181493911172685}
   - component: {fileID: 8955513962177496695}
   - component: {fileID: 2832726530022504319}
+  - component: {fileID: 1223837079}
   m_Layer: 0
   m_Name: Porta
   m_TagString: Untagged
@@ -609,15 +636,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235521403020074224}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.924, y: -0, z: 1.699}
+  m_LocalRotation: {x: -0.43686125, y: 0.5563395, z: 0.51566154, w: 0.4834583}
+  m_LocalPosition: {x: -0.96, y: -0.12, z: 1.73}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3821171052907956225}
   m_Father: {fileID: 3601843908617730672}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -95.013, y: -89.526, z: 188.234}
 --- !u!33 &8955513962177496695
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -668,6 +695,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1223837079
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235521403020074224}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f54de39e9ca426448a5a06be238db676, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5603546353409426480
 GameObject:
   m_ObjectHideFlags: 0
