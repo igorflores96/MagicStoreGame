@@ -6,7 +6,7 @@ public class FlamesManager : MonoBehaviour
     private GameObject[] candles; // Array to store candles
     private int currentCandleIndex; // Index of the current active candle
     private bool reduceScale = false; // Variable to control scale reduction
-    private float targetScaleFactor = 0.05f; // Target scale factor (5% of original scale)
+    private float targetScaleFactor = 0.20f; // Target scale factor (20% of original scale)
 
     private float scaleStartTime; // Time when scale reduction starts for a candle
     private Vector3[] originalScales; // Array to store original scales of candles
