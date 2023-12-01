@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private LayerMask _layerButton;
     [SerializeField] private LayerMask _layerMachineEnchant;
     [SerializeField] private LayerMask _layerStorage;
+    [SerializeField] private LayerMask _layerClient;
+
+    public Slider _sliderMouseSensitivity; 
+
 
 
     private PlayerMovement _playerMovement;
@@ -55,7 +60,17 @@ public class MovementPlayer : MonoBehaviour
         _playerMovement.MovementPlayer.GrabItem.performed += GrabItem;
         _playerMovement.MovementPlayer.UseMachine.performed += UseButton;  //microondas, box collider = adicionar layer 10 de botao na alavanca
         _playerMovement.MovementPlayer.UseLabel.performed += UseLabel;
-        _playerMovement.MovementPlayer.Enable();      
+        _playerMovement.MovementPlayer.GrabItem.performed += TalkToClient;
+        _playerMovement.MovementPlayer.Enable();     
+         
+    }
+
+    private void Start()
+    {
+        if (_sliderMouseSensitivity != null)
+        {
+            _sliderMouseSensitivity.onValueChanged.AddListener(UpdateSliderMouseSensitivityValue);
+        }
     }
 
     void Update()
@@ -64,6 +79,12 @@ public class MovementPlayer : MonoBehaviour
         CameraLook();
         UseItem();
     }
+
+    private void UpdateSliderMouseSensitivityValue(float value)
+    {
+        _mouseSensitivity = value;
+    }
+
 
     private void GrabItem(InputAction.CallbackContext context)
     {
@@ -214,6 +235,27 @@ public class MovementPlayer : MonoBehaviour
                 }
 
             } 
+        }
+    }
+
+    private void TalkToClient(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, _grabRayCastDistance, _layerClient))
+            {
+                if(hit.transform.TryGetComponent(out ForgeClient forgeClient))
+                {
+                    forgeClient.SetDialogToSay();
+                }
+                
+                if(hit.transform.TryGetComponent(out SellClient sellClient))
+                {
+                    sellClient.SetDialogToSay();
+                }
+            }
         }
     }
 

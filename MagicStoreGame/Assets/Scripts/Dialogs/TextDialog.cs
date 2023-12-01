@@ -8,7 +8,11 @@ public class TextDialog : MonoBehaviour
     [SerializeField] private float typingSpeed;
     [SerializeField] private GameObject dialogCanvas;
     private string _sentenceToDisplay;
+    private Coroutine typingCoroutine;
 
+    private void OnEnable() {
+        dialogCanvas.SetActive(false);
+    }
     IEnumerator Type()
     {
         foreach ( char letter in _sentenceToDisplay.ToCharArray())
@@ -19,11 +23,15 @@ public class TextDialog : MonoBehaviour
     }
     public void ShowSentence()
     {
+        if(typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        dialogCanvas.SetActive(true);
         if (_sentenceToDisplay != null)
         {
             textDisplay.text = "";
             
-            StartCoroutine(Type());
+            typingCoroutine = StartCoroutine(Type());
             _sentenceToDisplay = null;
         }
     }
